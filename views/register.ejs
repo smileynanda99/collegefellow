@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Fellow</title>
+    <%- include("cdn/style")-%>
+    <link rel="stylesheet" href="../css/styles.css"  >
+    <style>
+    .container{
+        width:400px;
+        border-radius: 10px;
+        background-color: #0811202d;
+        text-align:center;
+        margin: auto;
+       padding-bottom: 10px;
+        
+    }
+    body{
+        background-color: #faf4f4;
+        overflow-x: hidden;
+        padding:70px;
+    }
+    h1{
+        margin:auto;
+    }
+    .main{
+        margin-top: 30px;
+    }
+    .row{
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        height:90px;
+        width:400px;
+        background-color:#D03737 ;
+        color: #fff;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .btn-login{
+        background-color: #D03737;
+        color: #fff;
+    }
+    .forget{
+        margin-top: 10px;
+    }
+    .input-group-text{
+        width: 40px;
+    }
+    .form-text{
+        margin-bottom: 15px;
+        margin-top: -2px;
+    }
+    </style>
+    
+</head>
+<body>
+<div class="container justify-content-center" >
+	    <form action="register" method="post">
+            <div class="row">
+                <h1><i class="fa fa-user-plus" aria-hidden="true"></i> Register</h1>
+             </div>
+              <div class="main">
+                <div class="alert alert-warning alert-dismissible fade show" id="message" role="alert" style="padding:2px; display: none;">
+                     Please enter all <strong>Imformative</strong> required field. 
+                    <button type="button" class="close " data-dismiss="alert" aria-label="Close" style="padding: inherit;">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <%- include('partials/messages'); -%>
+                 <div class="input-group">
+                     <div class="input-group-prepend">
+                         <span class="input-group-text"><i class="fa fa-user-circle-o icon"></i></span>
+                     </div>
+                     <input id="username" type="text" name="username" class="form-control" placeholder="Username"
+                     value="<%= typeof username != 'undefined' ? username : '' %>" />
+                     
+                 </div>
+                 <small id="usernameError" class="form-text ">
+                    Usernames can only contain (a-z),(0-9),( . )and( _ ).
+                  </small>
+                 <div class="input-group">
+                     <div class="input-group-prepend">
+                         <span class="input-group-text"><i class="fa fa-graduation-cap icon"></i></span>
+                     </div>
+                     <select id="collegeName" name="collegeName" class="form-control"
+                     value="<%= typeof collegeName != 'undefined' ? collegeName : '' %>" >
+                         <option selected>Choose college</option>
+                         <option>MNIT Jaipur</option>
+                         <option>IIITDM Jabalpur</option>
+                       </select>
+                 </div>
+                 <br />
+                 <div class="input-group">
+                     <div class="input-group-prepend">
+                         <span class="input-group-text"><i class="fa fa-envelope icon"></i></span>
+                     </div>
+                     <input type="email" id="collegeEmail" name="collegeEmail" class="form-control" placeholder="College Email"
+                     value="<%= typeof collegeEmail != 'undefined' ? collegeEmail : '' %>"/>
+                 </div>
+                 <small id="emailError" class="form-text" >
+                    Your Email id Must be of college.
+                  </small>
+                 <div class="input-group">
+                     <div class="input-group-prepend">
+                         <span class="input-group-text"><i class="fa fa-key "></i></span>
+                     </div>
+                         <input type="Password"  id="password" name="password" class="form-control" placeholder="New password" 
+                         value="<%= typeof password != 'undefined' ? password : '' %>"/>
+                 </div>
+                     <br />
+                     <button id="registerBtn" type="submit" class="btn btn-login" name="register" > Register</button>
+               </div>
+        </form>
+          <div class="forget">
+                  <p>You have an Account! <a href="./login">Login Now</a></p>
+          </div>
+ </div>          
+ 
+    
+
+    <footer class="fixed-bottom footer">© 2020 COLLEGE FELLOW</footer>
+   
+    <%- include("cdn/script")-%>
+    <script  src="../js/registerValidation.js" type="text/javascript"> </script>
+    
+</body>
+</html>    

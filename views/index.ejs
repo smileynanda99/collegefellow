@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Fellow</title>
+    <%- include("cdn/style") -%>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="nav-wrapper">
+            <nav class="navbar navbar-expand-md navbar-light" style="background-color:  #081120;" aria-expanded="false">
+              <!-- LOGO  -->
+              <a class="navbar-brand" href="#"><img style="width: 50px; height: 50px;" src="./images/logo-icon.png">
+                <span class="align-bottom">CF</span> 
+             </a>
+              <!-- navbar menu -->
+                <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span  class="navbar-toggler-icon"><i  class="fa fa-bars text-white"></i></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./users/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about-us">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#feadback">Fead Back</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+    </div>
+    <div class="jumbotron">
+        <div class="container-fluid banner-container">
+            <div class="row banner-row pt-3 pb-3 ">
+                <div class="col-md-6 banner">
+                    <img class="img-fluid " src="./images/logo.png" />
+                </div>
+                <div class="col-md-6" style="margin-top: 10%;">
+                    <div class="row">
+                        <div class="col-12 text-center d-flex align-items-center"
+                            style="text-align: justify;">
+                            <p class="welcome-heading">
+                               Find new friends across all colleges and make a connection with them.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 justify-content-center d-flex center">
+                            <a href="./users/register" class="btn btn-lg" style="background-color: #D03737; color: white;">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <section id="features" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center mt-3 mb-3 feature swing">
+                <img src="./images/hand.png" >
+                <h3>Resisted</h3>
+                <p>This platform is resisted, Only college students can sign up on it by using a college official email.</p>
+            </div>
+            <div class="col-md-4 text-center mt-3 mb-3 feature swing">
+                <img src="./images/chat.png" >
+                <h3>Real-Time Chat</h3>
+                <p>We are using Real-Time Chat service. So you can see instant messaging.</p>
+            </div>
+            <div class="col-md-4 text-center mt-3 mb-3 feature swing">
+                <img src="./images/explore.png" >
+                <h3>Explore</h3>
+                <p>We are providing an explore feature to search college students by college name to make easy connections.</p>
+            </div>
+        </div>
+    </div>
+   </section>
+
+   <section id="about-us" >
+    <div class="container-fluid " style="background-color: #D03737; padding: 3%;">
+        <div class="row justify-content-center" style="padding: 10%; padding-top: 0%; padding-bottom: 0%;">
+            <h1 class="mb-4" style="font-size: 3rem; font-weight: 700;">About US</h1>
+            &nbsp;
+            <p style="font-size: large;">
+                We are trying to provide our users with a clean and resisted environment to
+                make a social network across all college students. This platform will help
+                us to make an easy connection to all college students.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this Beta version, we are providing only a Real-Time chat feature and exploring feature. As soon
+                as we will provide a post feature also in the future. Keep support by sharing
+                with your college friends.<br><br>
+                <strong>Thanks!</strong>
+            </p>
+        </div>
+    </div>
+   </section>
+
+
+
+<section id="feadback">
+    <div class=" contact-form">
+        <div class="contact-image">
+            <img class="rocket" src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+        </div>
+        <form method="post">
+            <h3>Drop Us a Message</h3>
+        <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Your Name *" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="email" class="form-control" placeholder="Your Email *" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phoneNo" class="form-control" placeholder="Your Phone Number *" required  />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <textarea name="message" required class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <button class="btn btnContact">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+ <footer class="footer">© 2020 COLLEGE FELLOW</footer>
+ <%- include("cdn/script") -%>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Fellow</title>
+    <%- include("cdn/style") -%>
+    <link rel="stylesheet" href="./css/styles.css"  >
+    <link rel="stylesheet" href="./css/settings.css"  >
+    <link rel="stylesheet" href="./css/active.css"  >
+</head>
+<body>
+
+   <!-- Navbar content -->
+    <div class="nav-wrapper">
+      <nav class="navbar navbar-expand navbar-light" style="background-color:  #081120;" aria-expanded="false">
+        <!-- LOGO  -->
+        <a class="navbar-brand" href="#">
+            <img style="width: 50px; height: 50px;" src="./images/logo-icon.png">
+            <span class="align-bottom">CF</span> 
+        </a>
+        <!-- navbar menu -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                <i class="fa fa-toggle-on" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <div class="arrow"></div>
+                  <ul class="coloum">
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Rohit Kumar</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Rajat Gumber</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">Chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Smile</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">Chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Vikram</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Ativ</strong></div>
+                        <div>Active nwo</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">Chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Ankit Doot</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">Chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Pradeep Dukiya</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">chat</button>
+                      </div>
+                    </li>
+                  </ul>
+                  
+                  </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="./explore"  >
+                <i class="fa fa-search-plus" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href="chat" >
+                <i class="fa fa-paper-plane" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href="./profile"  >
+                <i class="fa fa-user-circle" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+            </li>
+          </ul>
+        
+      </nav>
+    </div>
+
+    <section id="profile">
+        <div class="container emp-profile">
+              <li class=" profile">
+                <div class="profile-img">
+                  <img src="./images/my.jpg" alt="profile">
+                </div>
+                <div class="profile-content">
+                  <div><a><strong>er.rknanda_hmh</strong></a></div>
+                  <div>Malviya National Institute of Technology Jaipur</div>
+                  <div class="change-img"><a style="color: cornflowerblue;" data-toggle="modal" data-target="#change-img-modal" >Change Profile Image</a></div>
+                </div>
+              </li>
+              <div class="row">
+                <div class="container mt-3 ">
+                  <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <a class="nav-link active" id="edit-profile-tab" data-toggle="tab" href="#edit-profile" role="tab" aria-controls="edit-profile" aria-selected="true">Edit Profile</a>
+                      <a class="nav-link" id="change-password-tab" data-toggle="tab" href="#change-password" role="tab" aria-controls="change-password" aria-selected="false">Change Password</a>
+                      <a class="nav-link"  data-toggle="modal" data-target="#logout-modal"  aria-selected="false" style="cursor: pointer;">Log Out</a>
+                    </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="edit-profile" role="tabpanel" aria-labelledby="edit-profile-tab">
+                      <form class="mt-3">
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="inputEmail4">Username :</label>
+                            <input type="email" class="form-control" id="inputEmail4">
+                            <span>username must be unique</span>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="inputPassword4">Name :</label>
+                            <input type="password" class="form-control" id="inputPassword4">
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="exampleFormControlSelect1">Gender :</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Custom</option>
+                              <option>Prefer Not To Say</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="inputPassword4">Mobile Number :</label>
+                            <input type="password" class="form-control" id="inputPassword4">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Bio :</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Change Save</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="tab-pane fade" id="change-password" role="tabpanel" aria-labelledby="change-password-tab">
+                      <form class="mt-3">
+                        <div class="form-group">
+                          <label for="inputAddress">Old Password :</label>
+                          <input type="password" class="form-control" id="inputAddress" placeholder="">
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="inputEmail4">New Password :</label>
+                            <input type="password" class="form-control" id="inputEmail4">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="inputPassword4">Confirm New Password :</label>
+                            <input type="password" class="form-control" id="inputPassword4">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Change Password</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+        </div>
+    </section>
+
+
+
+
+<!-- Change image Modal -->
+<div class="modal fade" id="change-img-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change Profile Image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group" >
+          
+          <li class="list-group-item">
+            <form>
+              <div class="file btn form-group">
+                Change Photo
+                <input type="file" name="file"/>
+            </div>
+            </form>
+          </li>
+          <li class="list-group-item">
+            <a  class="remove" style="color: red;">Remove Image</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--log out Modal -->
+<div class="modal" tabindex="-1" id="logout-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Log Out</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>You want to Logout. Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <a href="/users/logout" type="button" class="btn btn-logout">Yes</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+    
+<footer class="bottom footer">© 2020 COLLEGE FELLOW</footer>
+    <%- include("cdn/script") -%>
+</body>
+</html>

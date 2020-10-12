@@ -1,0 +1,54 @@
+body {
+    background-color: #faf4f4;
+    overflow-x: hidden;
+   
+}
+ul {
+	list-style: none;
+}
+
+.navbar-brand span{
+    color: white;
+    font-size: xx-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+a:hover,
+a:focus,
+a:active{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+}
+.navbar {
+    background-color: #081120;
+}
+.nav-link{
+    color: white;
+}
+.nav-link:hover,
+.nav-link:active,
+.nav-link:focus{
+    color:#D03737  ;
+}
+
+.footer{
+    text-align: center;
+    font-weight: 600;
+    padding: 5px 0px;
+    opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+    .navbar-brand span{
+        display: none;
+    }
+}
+
+
+
+
+

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Fellow</title>
+    <%- include("cdn/style") -%>
+    <link rel="stylesheet" href="./css/styles.css"  >
+    <link rel="stylesheet" href="./css/explore.css"  >
+    <link rel="stylesheet" href="./css/active.css"  >
+</head>
+<body>
+
+   <!-- Navbar content -->
+    <div class="nav-wrapper">
+      <nav class="navbar navbar-expand navbar-light" style="background-color:  #081120;" aria-expanded="false">
+        <!-- LOGO  -->
+        <a class="navbar-brand" href="#">
+            <img style="width: 50px; height: 50px;" src="./images/logo-icon.png">
+            <span class="align-bottom">CF</span> 
+        </a>
+        <!-- navbar menu -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                <i class="fa fa-toggle-on" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <div class="arrow"></div>
+                  <ul class="coloum">
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Rohit Kumar</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Smile</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">Chat</button>
+                      </div>
+                    </li>
+                  </ul>
+                  </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color: #D03737;" >
+                <i class="fa fa-search-plus" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href="chat" >
+                <i class="fa fa-paper-plane" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href="profile" >
+                <i class="fa fa-user-circle" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+            </li>
+          </ul>
+      </nav>
+    </div>
+
+    
+<section class="search-sec">
+  <div class="container">
+      <form action="#" method="post">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="row" >
+                      <div class="col-lg-3 col-md-3 col-sm-12 p-0 offset-lg-1 offset-md-1">
+                          <input type="text" class="form-control search-slt input-left" placeholder="Enter Username">
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-12 p-0">
+                          <select class="form-control  search-slt " id="exampleFormControlSelect1">
+                              <option>Select College</option>
+                              <option>MNIT Jaipur</option>
+                              <option>NIT Dehli</option>
+                          </select>
+                      </div>
+                      <div class="col-lg-2 col-md-3 col-sm-12 p-0">
+                          <button type="button" class="btn btn-danger wrn-btn input-right">Search</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </form>
+  </div>
+</section>
+
+<section class="search-result">
+  <div class="container-sm">
+    <div class="row">
+      <div class="col-sm-12 borders">
+
+          <h4 class="text-center">Your Search result is here:-</h4>
+          <ul class="coloums">
+            <li class="dropdown-item list">
+              <div class="list-img">
+                <img src="./images/my.jpg" alt="profile">
+              </div>
+              <div class="list-content">
+                <div><strong>Rohit Kumar</strong></div>
+                <div>College Name</div>
+              </div>
+              <div class="list-btn">
+                <button class="btn btn-primary">follow</button>
+              </div>
+            </li>
+            <li class="dropdown-item list">
+              <div class="list-img">
+                <img src="./images/my.jpg" alt="profile">
+              </div>
+              <div class="list-content">
+                <div><strong>Smile</strong></div>
+                <div>College Name</div>
+              </div>
+              <div class="list-btn">
+                <button class="btn btn-primary">follow</button>
+              </div>
+            </li>
+            <li class="dropdown-item list">
+              <div class="list-img">
+                <img src="./images/my.jpg" alt="profile">
+              </div>
+              <div class="list-content">
+                <div><strong>Rohit Kumar</strong></div>
+                <div>College Name</div>
+              </div>
+              <div class="list-btn">
+                <button class="btn btn-primary">follow</button>
+              </div>
+            </li>
+            <li class="dropdown-item list">
+              <div class="list-img">
+                <img src="./images/my.jpg" alt="profile">
+              </div>
+              <div class="list-content">
+                <div><strong>Smile</strong></div>
+                <div>College Name</div>
+              </div>
+              <div class="list-btn">
+                <button class="btn btn-primary">follow</button>
+              </div>
+            </li>
+            <li class="dropdown-item list">
+              <div class="list-img">
+                <img src="./images/my.jpg" alt="profile">
+              </div>
+              <div class="list-content">
+                <div><strong>Rohit Kumar</strong></div>
+                <div>College Name</div>
+              </div>
+              <div class="list-btn">
+                <button class="btn btn-primary">follow</button>
+              </div>
+            </li>
+            <li class="dropdown-item list">
+              <div class="list-img">
+                <img src="./images/my.jpg" alt="profile">
+              </div>
+              <div class="list-content">
+                <div><strong>Smile</strong></div>
+                <div>College Name</div>
+              </div>
+              <div class="list-btn">
+                <button class="btn btn-primary">follow</button>
+              </div>
+            </li>
+            <li class="dropdown-item list">
+              <div class="list-img">
+                <img src="./images/my.jpg" alt="profile">
+              </div>
+              <div class="list-content">
+                <div><strong>Rohit Kumar</strong></div>
+                <div>College Name</div>
+              </div>
+              <div class="list-btn">
+                <button class="btn btn-primary">follow</button>
+              </div>
+            </li>
+            <li class="dropdown-item list">
+              <div class="list-img">
+                <img src="./images/my.jpg" alt="profile">
+              </div>
+              <div class="list-content">
+                <div><strong>Smile</strong></div>
+                <div>College Name</div>
+              </div>
+              <div class="list-btn">
+                <button class="btn btn-primary">follow</button>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<%- include("cdn/script") -%>
+</body>
+</html>

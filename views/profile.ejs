@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Fellow</title>
+    <%- include("cdn/style") -%>
+    <link rel="stylesheet" href="./css/styles.css"  >
+    <link rel="stylesheet" href="./css/profile.css"  >
+    <link rel="stylesheet" href="./css/active.css"  >
+</head>
+<body>
+
+   <!-- Navbar content -->
+    <div class="nav-wrapper">
+      <nav class="navbar navbar-expand navbar-light" style="background-color:  #081120;" aria-expanded="false">
+        <!-- LOGO  -->
+        <a class="navbar-brand" href="#">
+          <img style="width: 50px; height: 50px;" src="./images/logo-icon.png">
+          <span class="align-bottom">CF</span> 
+        </a>
+        <!-- navbar menu -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                <i class="fa fa-toggle-on" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <div class="arrow"></div>
+                  <ul class="coloum">
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Rohit Kumar</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Rajat Gumber</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">Chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Smile</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">Chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Vikram</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Ativ</strong></div>
+                        <div>Active nwo</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">Chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Ankit Doot</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">Chat</button>
+                      </div>
+                    </li>
+                    <li class="dropdown-item list">
+                      <div class="list-img">
+                        <img src="./images/my.jpg" alt="profile">
+                      </div>
+                      <div class="list-content">
+                        <div><strong>Pradeep Dukiya</strong></div>
+                        <div>Active now</div>
+                        <div class="online-list"></div>
+                      </div>
+                      <div class="list-btn">
+                        <button class="btn btn-primary">chat</button>
+                      </div>
+                    </li>
+                  </ul>
+                  
+                  </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="./explore"  >
+                <i class="fa fa-search-plus" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href="chat" >
+                <i class="fa fa-paper-plane" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="#" style="color: #D03737;">
+                <i class="fa fa-user-circle" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+            </li>
+          </ul>
+        
+      </nav>
+    </div>
+
+    <section id="header">
+      
+          <div class="row">
+            <div class="col col-sm-12">
+              <div class="profile-container">
+                <div class=" profile" >
+                  <div class="profile-img text-right">
+                    <img src="./images/my.jpg" alt="profile">
+                  </div>
+                  <div class="profile-content ">
+                    <div><a class="align-top username">er.rknanda_hmh</a></div>
+                    <a href="./settings#edit-profile" style="color: white;" class="btn btn-profile ">Edit Profile</a> 
+                    <a data-toggle="modal" data-target="#logout-modal" style="color: white;" class="btn btn-logout ml-2">Logout</a> 
+                  </div>
+                </div>
+                  <div class="row">
+                    <div class="col col-sm-12 mt-3 md-follow text-center">
+                      <a data-toggle="modal" data-target="#request-modal" class="follow "><strong>10</strong> Requests</a>
+                      <a data-toggle="modal" data-target="#follow-modal" class="follow "><strong>161</strong> followers</a>
+                      <a data-toggle="modal" data-target="#following-modal"class="follow"><strong>109</strong> followings</a>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="container temp-div"></div>
+            <div class="row sm-follow">
+              <div class="col col-sm-12 mt-3  text-center">
+                <div style="border-bottom: 1px solid #8f8888;"></div>
+                <a data-toggle="modal" data-target="#request-modal" class="s-follow "><strong>10</strong> Requests</a>
+                <a data-toggle="modal" data-target="#follow-modal" class="s-follow "><strong>161</strong> followers</a>
+                <a data-toggle="modal" data-target="#following-modal"class="s-follow"><strong>109</strong> followings</a>
+                <div style="border-bottom: 1px solid #8f8888;"></div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col bio"><p><strong>BIO:</strong><br> ROHIT NANDA<br>👇👇👇👇👇<br><a href="www.rknanda.c1.biz">www.rknanda.c1.biz</a></p>
+              </div>
+            </div>
+            <!-- <div class="col col-md-6 col-sm-12"></div> -->
+          </div>
+         
+
+    </section> 
+    <!-- Follow Modal -->
+<div class="modal fade" id="follow-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Followers</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="coloums">
+         
+          <li class="dropdown-item list">
+            <div class="list-img">
+              <img src="./images/my.jpg" alt="profile">
+            </div>
+            <div class="list-content">
+              <div><strong>Rohit Kumar</strong></div>
+              <div>College Name</div>
+            </div>
+            <div class="list-btn">
+              <button class="btn btn-primary">follow</button>
+            </div>
+          </li>
+          <li class="dropdown-item list">
+            <div class="list-img">
+              <img src="./images/my.jpg" alt="profile">
+            </div>
+            <div class="list-content">
+              <div><strong>Smile</strong></div>
+              <div>College Name</div>
+            </div>
+            <div class="list-btn">
+              <button class="btn btn-light">following</button>
+            </div>
+          </li>
+          <li class="dropdown-item list">
+            <div class="list-img">
+              <img src="./images/my.jpg" alt="profile">
+            </div>
+            <div class="list-content">
+              <div><strong>Rohit Kumar</strong></div>
+              <div>College Name</div>
+            </div>
+            <div class="list-btn">
+              <button class="btn btn-primary">follow</button>
+            </div>
+          </li>
+          <li class="dropdown-item list">
+            <div class="list-img">
+              <img src="./images/my.jpg" alt="profile">
+            </div>
+            <div class="list-content">
+              <div><strong>Rohit Kumar</strong></div>
+              <div>College Name</div>
+            </div>
+            <div class="list-btn">
+              <button class="btn btn-primary">follow</button>
+            </div>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Following Modal -->
+    <div class="modal fade" id="following-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Followings</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul class="coloums">
+              <li class="dropdown-item list">
+                <div class="list-img">
+                  <img src="./images/my.jpg" alt="profile">
+                </div>
+                <div class="list-content">
+                  <div><strong>Rohit Kumar</strong></div>
+                  <div>College Name</div>
+                </div>
+                <div class="list-btn">
+                  <button class="btn btn-light">following</button>
+                </div>
+              </li>
+              <li class="dropdown-item list">
+                <div class="list-img">
+                  <img src="./images/my.jpg" alt="profile">
+                </div>
+                <div class="list-content">
+                  <div><strong>Smile</strong></div>
+                  <div>College Name</div>
+                </div>
+                <div class="list-btn">
+                  <button class="btn btn-light">following</button>
+                </div>
+              </li>
+              <li class="dropdown-item list">
+                <div class="list-img">
+                  <img src="./images/my.jpg" alt="profile">
+                </div>
+                <div class="list-content">
+                  <div><strong>Rohit Kumar</strong></div>
+                  <div>College Name</div>
+                </div>
+                <div class="list-btn">
+                  <button class="btn btn-light">following</button>
+                </div>
+              </li>
+              <li class="dropdown-item list">
+                <div class="list-img">
+                  <img src="./images/my.jpg" alt="profile">
+                </div>
+                <div class="list-content">
+                  <div><strong>Smile</strong></div>
+                  <div>College Name</div>
+                </div>
+                <div class="list-btn">
+                  <button class="btn btn-light">following</button>
+                </div>
+              </li>
+              <li class="dropdown-item list">
+                <div class="list-img">
+                  <img src="./images/my.jpg" alt="profile">
+                </div>
+                <div class="list-content">
+                  <div><strong>Rohit Kumar</strong></div>
+                  <div>College Name</div>
+                </div>
+                <div class="list-btn">
+                  <button class="btn btn-light">following</button>
+                </div>
+              </li>
+              <li class="dropdown-item list">
+                <div class="list-img">
+                  <img src="./images/my.jpg" alt="profile">
+                </div>
+                <div class="list-content">
+                  <div><strong>Smile</strong></div>
+                  <div>College Name</div>
+                </div>
+                <div class="list-btn">
+                  <button class="btn btn-light">following</button>
+                </div>
+              </li>
+              <li class="dropdown-item list">
+                <div class="list-img">
+                  <img src="./images/my.jpg" alt="profile">
+                </div>
+                <div class="list-content">
+                  <div><strong>Smile</strong></div>
+                  <div>College Name</div>
+                </div>
+                <div class="list-btn">
+                  <button class="btn btn-light">following</button>
+                </div>
+              </li>
+              <li class="dropdown-item list">
+                <div class="list-img">
+                  <img src="./images/my.jpg" alt="profile">
+                </div>
+                <div class="list-content">
+                  <div><strong>Smile</strong></div>
+                  <div>College Name</div>
+                </div>
+                <div class="list-btn">
+                  <button class="btn btn-light">following</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Request Modal -->
+<div class="modal fade" id="request-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Follow Requests</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="coloums">
+         
+          <li class="dropdown-item list">
+            <div class="list-img">
+              <img src="./images/my.jpg" alt="profile">
+            </div>
+            <div class="list-content">
+              <div><strong>Rohit Kumar</strong></div>
+              <div>Malviya National Institute of Technology Jaipur</div>
+            </div>
+            <div class="list-btn">
+              <button class="btn btn-primary">Confirm</button>
+              <button class="btn btn-del">Delete</button>
+            </div>
+          </li>
+          <li class="dropdown-item list">
+            <div class="list-img">
+              <img src="./images/my.jpg" alt="profile">
+            </div>
+            <div class="list-content">
+              <div><strong>Smile</strong></div>
+              <div>College Name</div>
+            </div>
+            <div class="list-btn">
+              <button class="btn btn-primary">Confirm</button>
+              <button class="btn btn-del">Delete</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--log out Modal -->
+<div class="modal" tabindex="-1" id="logout-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Log Out</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>You want to Logout. Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <a href="/users/logout" type="button" class="btn btn-logout">Yes</a>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<footer class="fixed-bottom footer">© 2020 COLLEGE FELLOW</footer>
+
+<%- include("cdn/script") -%>
+</body>
+</html>
