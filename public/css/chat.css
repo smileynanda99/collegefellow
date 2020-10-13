@@ -124,7 +124,9 @@ body,html{
    
 }
 .col{
+    min-width: 400px;
     max-width: 900px;
+    overflow-x: auto;
     height: 88.5vh;
 }
 .chat-container{

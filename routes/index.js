@@ -15,8 +15,8 @@ router.post('/', (req, res) =>{
     const msg = {
         from: 'smileynanda99@gmail.com',
         to: 'smileynanda100@gmail.com',
-        subject: 'College fellowers- Fead Back!',
-        text:`feadback`,
+        subject: 'College fellowers- Feed Back!',
+        text:`feedback`,
         html:`<h2 style="color: #d03737" >Name: ${name}</h2>
         <h4>Email: ${email}</h4>
         <h4>Mobile No: ${phoneNo}</h4>
