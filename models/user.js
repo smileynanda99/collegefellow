@@ -1,8 +1,10 @@
 const mongoose   = require('mongoose');
+const ChatRoom = require('./chatRoom');
+
 const userSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     username:{
-        type: String,
+        type: 'String',
         unique: true,
       },
     collegeEmail:{
@@ -16,13 +18,16 @@ const userSchema = new mongoose.Schema({
     collegeName: String,
     gender: String,
     bio: String,
-    follow:[  { type: mongoose.Schema.Types.ObjectId, ref:'User'}],
-    following:[{ type: mongoose.Schema.Types.ObjectId, ref:'User'}],
-    sendRequest:[  { type: mongoose.Schema.Types.ObjectId, ref:'User'}],
-    recievedRequest:[{ type: mongoose.Schema.Types.ObjectId, ref:'User'}],
+    follow:[ this],
+    following:[ this],
+    sendRequest:[ this],
+    recievedRequest:[ this],
+    chatRoom:[{type: mongoose.Schema.Types.ObjectId, ref: 'ChatRoom'}],
+    lastSeen: Number,
+    active: Boolean,
     status: Boolean,
     otp: Number
 });
 
-module.exports = mongoose.models.Users || mongoose.model('Users', userSchema);
-
+const User = mongoose.models.User || mongoose.model('User', userSchema);
+module.exports = User;

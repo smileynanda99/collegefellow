@@ -146,19 +146,25 @@
               <div class="profile-container">
                 <div class=" profile" >
                   <div class="profile-img text-right">
-                    <img src="./images/my.jpg" alt="profile">
+                    <img 
+                    <% if(user.photo) {%>
+                    src="./uploads-profile/<%=user.photo%>" 
+                    <% }else{ %>
+                      src="./uploads-profile/default-profile.png"  
+                    <% } %>
+                    alt="profile">
                   </div>
                   <div class="profile-content ">
-                    <div><a class="align-top username">er.rknanda_hmh</a></div>
+                    <div><a class="align-top username"><%= user.username%></a></div>
                     <a href="./settings#edit-profile" style="color: white;" class="btn btn-profile ">Edit Profile</a> 
                     <a data-toggle="modal" data-target="#logout-modal" style="color: white;" class="btn btn-logout ml-2">Logout</a> 
                   </div>
                 </div>
                   <div class="row">
                     <div class="col col-sm-12 mt-3 md-follow text-center">
-                      <a data-toggle="modal" data-target="#request-modal" class="follow "><strong>10</strong> Requests</a>
-                      <a data-toggle="modal" data-target="#follow-modal" class="follow "><strong>161</strong> followers</a>
-                      <a data-toggle="modal" data-target="#following-modal"class="follow"><strong>109</strong> followings</a>
+                      <a data-toggle="modal" data-target="#request-modal" class="follow "><strong><%= user.recievedRequest.length%></strong> Requests</a>
+                      <a data-toggle="modal" data-target="#follow-modal" class="follow "><strong><%= user.follow.length%></strong> followers</a>
+                      <a data-toggle="modal" data-target="#following-modal"class="follow"><strong><%= user.following.length%></strong> followings</a>
                     </div>
                   </div>
                 </div> 
@@ -168,14 +174,25 @@
             <div class="row sm-follow">
               <div class="col col-sm-12 mt-3  text-center">
                 <div style="border-bottom: 1px solid #8f8888;"></div>
-                <a data-toggle="modal" data-target="#request-modal" class="s-follow "><strong>10</strong> Requests</a>
-                <a data-toggle="modal" data-target="#follow-modal" class="s-follow "><strong>161</strong> followers</a>
-                <a data-toggle="modal" data-target="#following-modal"class="s-follow"><strong>109</strong> followings</a>
+                <a data-toggle="modal" data-target="#request-modal" class="s-follow "><strong><%= user.recievedRequest.length%></strong> Requests</a>
+                <a data-toggle="modal" data-target="#follow-modal" class="s-follow "><strong><%= user.follow.length%></strong> followers</a>
+                <a data-toggle="modal" data-target="#following-modal"class="s-follow"><strong><%= user.following.length%></strong> followings</a>
                 <div style="border-bottom: 1px solid #8f8888;"></div>
               </div>
             </div>
             <div class="row text-center">
-              <div class="col bio"><p><strong>BIO:</strong><br> ROHIT NANDA<br>👇👇👇👇👇<br><a href="www.rknanda.c1.biz">www.rknanda.c1.biz</a></p>
+              <div class="col bio">
+                <p><strong>BIO:</strong>
+                <br><% if(user.name) {%> 
+                  <%=user.name %><br>
+                <% } %>👇👇👇👇👇<br>
+                <% if(user.bio) {%> 
+                  <%const array=user.bio.split('\n') %>
+                     <%for( item of array){%>
+                      <%=item %> <br>
+                      <%}%>
+                <% } %>
+              </p>
               </div>
             </div>
             <!-- <div class="col col-md-6 col-sm-12"></div> -->
