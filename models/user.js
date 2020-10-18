@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
     chatRoom:[{type: mongoose.Schema.Types.ObjectId, ref: 'ChatRoom'}],
     lastSeen: Number,
     active: Boolean,
+    private:Boolean,
     status: Boolean,
     otp: Number
 });

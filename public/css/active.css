@@ -1,15 +1,28 @@
 .dropdown-toggle:after { content: none }
-.dropdown-menu.show {
+.active-dropdown.show {
     display: inline-block;
-    width: 400px;
+    width: 380px;
 }
-.dropdown-menu{
+.active-dropdown{
     position: relative;
     top:45px;
     left: -140px;
     border-radius: 6px;
     width: 100%;
 }
+
+.explore-dropdown.show {
+    display: inline-block;
+    width: 300px;
+}
+.explore-dropdown{
+    position: relative;
+    top:45px;
+    left: -140px;
+    border-radius: 6px;
+    width: 100%;
+}
+
 
 .arrow{
     position: absolute;
@@ -22,7 +35,7 @@
 }
 
 .coloum{
-    max-height: 70vh;
+    max-height: 60vh;
     overflow-y: auto;
     display: flex;
     flex-direction: column;

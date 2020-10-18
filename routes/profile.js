@@ -10,5 +10,16 @@ router.get('/profile', ensureAuthenticated, function(req, res) {
 });
 
 
+router.get('/profile/follow/:username', ensureAuthenticated, function(req, res) {
+    const {username } = req.params;
+    res.send("successfully follow "+username);
+});
+
+router.get('/profile/unfollow/:username', ensureAuthenticated, function(req, res) {
+    const {username } = req.params;
+    res.send("successfully unfollow "+username);
+});
+
+
 
 module.exports = router;

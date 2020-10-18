@@ -64,10 +64,14 @@ router.get('/settings/remove', ensureAuthenticated,async function(req, res){
 });
 
 router.post('/settings/changeSave', ensureAuthenticated, async (req, res)=>{
-      const { username, name, gender, phoneNo, bio} = req.body;
+      const { username, name, gender, phoneNo, bio, private} = req.body;
       if(username === req.user.username){
         try {
-            await User.findOneAndUpdate({username},{name, gender, phoneNo, bio});
+            var account = false;  
+            if(private==="private"){
+                account = true;
+            } 
+            await User.findOneAndUpdate({username},{name, gender, phoneNo, bio, private:account});
             message = "Profile change Saved successfully.";
             type="success"
             res.redirect('/settings');
@@ -83,8 +87,12 @@ router.post('/settings/changeSave', ensureAuthenticated, async (req, res)=>{
                 type="danger"
                 res.redirect('/settings');
             }else{
+              var account = false;  
+              if(private==="private"){
+                  account = true;
+              }  
               try {
-                await User.findOneAndUpdate({username:req.user.username},{username, name, gender, phoneNo, bio});
+                await User.findOneAndUpdate({username:req.user.username},{username, name, gender, phoneNo, bio, private:account});
                 message = "Profile change Saved successfully.";
                 type="success"
                 res.redirect('/settings');

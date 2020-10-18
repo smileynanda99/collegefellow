@@ -68,13 +68,15 @@ router.post('/register',async function(req, res) {
                     collegeName,
                     collegeEmail,
                     password : hash,
+                    photo:"default-profile.png",
+                    private: false,
                     otp: emailToken,
                     status: false
                 });
                 console.log(newUser);
                 newUser.save().then(user => {
                 console.log(user);
-                sendEmail(msg);
+                // sendEmail(msg);
                 req.flash('success_msg','Thanks for Register go with verify email');
                 res.redirect('./login');
                 })
@@ -144,7 +146,7 @@ router.get('/logout', (req, res) => {
             console.log(err,"louout err");
         }
         res.clearCookie('sessionId');
-        res.redirect('/');
+        res.redirect('/index');
     })
 });
 
