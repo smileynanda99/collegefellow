@@ -69,7 +69,6 @@ router.post('/register',async function(req, res) {
                     collegeEmail,
                     password : hash,
                     photo:"default-profile.png",
-                    private: false,
                     otp: emailToken,
                     status: false
                 });

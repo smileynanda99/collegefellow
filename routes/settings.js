@@ -64,14 +64,10 @@ router.get('/settings/remove', ensureAuthenticated,async function(req, res){
 });
 
 router.post('/settings/changeSave', ensureAuthenticated, async (req, res)=>{
-      const { username, name, gender, phoneNo, bio, private} = req.body;
+      const { username, name, gender, phoneNo, bio} = req.body;
       if(username === req.user.username){
         try {
-            var account = false;  
-            if(private==="private"){
-                account = true;
-            } 
-            await User.findOneAndUpdate({username},{name, gender, phoneNo, bio, private:account});
+            await User.findOneAndUpdate({username},{name, gender, phoneNo, bio});
             message = "Profile change Saved successfully.";
             type="success"
             res.redirect('/settings');
@@ -86,13 +82,9 @@ router.post('/settings/changeSave', ensureAuthenticated, async (req, res)=>{
                 message = "Username is Already taken by someone else";
                 type="danger"
                 res.redirect('/settings');
-            }else{
-              var account = false;  
-              if(private==="private"){
-                  account = true;
-              }  
+            }else{ 
               try {
-                await User.findOneAndUpdate({username:req.user.username},{username, name, gender, phoneNo, bio, private:account});
+                await User.findOneAndUpdate({username:req.user.username},{username, name, gender, phoneNo, bio});
                 message = "Profile change Saved successfully.";
                 type="success"
                 res.redirect('/settings');

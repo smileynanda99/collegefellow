@@ -6,7 +6,7 @@
     <title>College Fellow</title>
     <%- include("cdn/style") -%>
     <link rel="stylesheet" href="./css/styles.css"  >
-    <link rel="stylesheet" href="./css/profile.css"  >
+    <link rel="stylesheet" href="./css/profile.css" >
     <link rel="stylesheet" href="./css/active.css"  >
 </head>
 <body>
@@ -86,7 +86,7 @@
                         <a href="./settings#edit-profile" style="color: white;" class="btn btn-profile ">Edit Profile</a> 
                         <a data-toggle="modal" data-target="#logout-modal" style="color: white;" class="btn btn-logout ml-2">Logout</a>  
                     <% } else if(user.following.length===0||(user.following).find(profile._id)!==undefined) { %>
-                    <a href="./profile/follow/<%=profile.username%>" style="color: white;" class="btn btn-primary ">Follow</a> 
+                    <a href="./profile/follow/<%=profile.username%>" style="color: white;" class="btn btn-primary follow">Follow</a> 
                      
                     <% } else {%>
                         <a href="./chat" style="color: white;" class="btn btn-primary ">Chat</a> 
