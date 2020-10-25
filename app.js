@@ -2,19 +2,22 @@
 require("dotenv").config();
 //import express  and other js libarary
 const express = require("express");
+//make our express app
+const app = express();
 const bodyParser = require("body-parser");     
 const mongoose = require('mongoose');
 const session =require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
-
+const server = require('http').createServer(app);
+const io = require('socket.io').listen(server);
+//import model
+const User = require('./models/user');
 require('./config/passport-config')(passport);
 
 //define port
 const PORT = process.env.PORT || 3000;
 
-//make our express app
-const app = express();
 
 //mongoose connect and set plugins
 mongoose.connect(process.env.DB_URL, 
@@ -35,6 +38,8 @@ app.use(bodyParser.json());
 //connect flash messaging
 app.use(flash());
 
+//set socket.io
+app.set("socketio", io);
 //Express Session
 app.use(session({
   secret: process.env.SESS_SECRET,
@@ -63,11 +68,27 @@ app.use('/users', require('./routes/users'));
 app.use('/', require('./routes/profile'));
 app.use('/', require('./routes/chat'));
 app.use('/', require('./routes/explore'));
+app.use('/', require('./routes/active'));
 app.use('/', require('./routes/settings'));
 app.use('/', require('./routes/view'));
 
+
+
+//chat
+io.on('connection', socket => {
+  socket.on('newUser',async(username)=>{
+       socket.id=username;
+       await User.findOneAndUpdate({username:socket.id},{active:true});
+  });
+
+  socket.on('disconnect', async() => {
+    await User.findOneAndUpdate({username:socket.id},{active:false, lastSeen:new Date().getTime()});
+  });
+});
+
+
 //listen of port :3000
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`server is running at port :${PORT}`);
 })
 
