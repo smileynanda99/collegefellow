@@ -175,8 +175,8 @@ body{
 
  .list-btn button{
      border-radius: 5px;
-     padding: 2px;
-     width: auto;
+     padding: 4px;
+     width: 100px;
      padding-left: 10px;
      height: 40px;
  }

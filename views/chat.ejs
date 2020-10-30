@@ -22,41 +22,16 @@
         </a>
         <!-- navbar menu -->
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link text-white dropdown-toggle" href="#" id="DroownActive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-              <i class="fa fa-toggle-on" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
-              <div class="dropdown-menu active-dropdown" aria-labelledby="DropdownActive">
-                <div class="arrow"></div>
-                <ul class="coloum">
-                  <li class="dropdown-item list">
-                    <div class="list-img">
-                      <img src="./images/my.jpg" alt="profile">
-                    </div>
-                    <div class="list-content">
-                      <div><strong>Rohit Kumar</strong></div>
-                      <div>Active now</div>
-                      <div class="online-list"></div>
-                    </div>
-                    <div class="list-btn">
-                      <button class="btn btn-primary">chat</button>
-                    </div>
-                  </li>
-                  <li class="dropdown-item list">
-                    <div class="list-img">
-                      <img src="./images/my.jpg" alt="profile">
-                    </div>
-                    <div class="list-content">
-                      <div><strong>Smile Active</strong></div>
-                      <div>Active now</div>
-                      <div class="online-list"></div>
-                    </div>
-                    <div class="list-btn">
-                      <button class="btn btn-primary">Chat</button>
-                    </div>
-                  </li>
-                </ul>
+         <li class="nav-item dropdown">
+              <a class="nav-link text-white dropdown-toggle" href="#" id="DroownActive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                <i class="fa fa-toggle-on" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+                <div class="dropdown-menu active-dropdown" aria-labelledby="DropdownActive">
+                  <div class="arrow"></div>
+                  <ul class="coloum" id="statusResult">
+                    <!-- active user -->
+                  </ul>
                 </div>
-          </li>
+            </li>
 
 
           <li class="nav-item dropdown">
@@ -225,6 +200,8 @@
 
     <!-- JQuery -->
    <%- include("cdn/script") -%>
+   <script src="/socket.io/socket.io.js" ></script>
+   <script src="../js/index.js" type="text/javascript"></script>  
     <script>
       	$(document).ready(function(){
             $('#action_menu_btn').click(function(){
@@ -240,16 +217,50 @@
               $.post('/explore', { data: username },(res)=>{
                     var Data = '';
                     $.each(res, (key, value) => {
-                            Data += `<a href='/${value.username}' ><li class='dropdown-item list'>  <div class='list-img'>`;
+                      if("<%=user.username%>" !=value.username){
+                            Data += `<a href='/${value.username}' ><li class='list'>  <div class='list-img'>`;
                             Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
                             Data += "<div class='list-content'> <div><strong>" + value.username + "</strong></div>";
                             Data += "<div>" + value.collegeName + "</div>";
                             Data += "</div>  </li> </a>"; 
+                      }
                         });
                         $('#searchResult').html(Data);
                     
                 });
             }); 
+
+
+
+
+
+
+
+
+
+
+            //active user
+            const socket = io();
+            var username= "<%=user.username%>";
+            socket.emit('newUser',username);
+
+            $('.fa-toggle-on').click(()=>{
+              $.post('/status',(res)=>{
+                    var Data = '';
+                    $.each(res, (key, value) => {
+                                if("<%=user.username%>" !=value.username){
+                                    Data += `<li class='list'>  <div class='list-img'>`;
+                                    Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
+                                    Data += "<div class='list-content'> <div><strong>" + value.username + "</strong> </div>";
+                                    Data += "<div>Active now</div> <div class='online-list'></div> </div>";
+                                    Data += "<div class='list-btn'> <button class='btn btn-primary'>chat</button>";
+                                    Data += "</div>  </li>"; 
+                                }
+                        });
+                        $('#statusResult').html(Data);
+                    
+                });
+              });
         });
         
     </script>

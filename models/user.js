@@ -20,8 +20,6 @@ const userSchema = new mongoose.Schema({
     bio: String,
     follow:[ this],
     following:[ this],
-    sendRequest:[ this],
-    recievedRequest:[ this],
     chatRoom:[{type: mongoose.Schema.Types.ObjectId, ref: 'ChatRoom'}],
     lastSeen: Number,
     active: Boolean,

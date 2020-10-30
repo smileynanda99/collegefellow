@@ -5,7 +5,10 @@ const {  ensureAuthenticated} = require('../config/auth');
 
 router.get('/:username',ensureAuthenticated, async function(req, res) {
     const {username } = req.params;
-    await User.findOne({username},async (err,profile)=>{
+    if(username === req.user.username){
+       res.render("profile" , {user: req.user});
+    }else{
+      await User.findOne({username},async (err,profile)=>{
         if(!err){
           if(profile){
              res.render('view-profile',{user:req.user, profile:profile});
@@ -15,7 +18,8 @@ router.get('/:username',ensureAuthenticated, async function(req, res) {
         } else{
          console.log("somthing went wrong");
        }
-     })
+     });
+    }
 });
 
 

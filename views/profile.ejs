@@ -84,9 +84,8 @@
                 </div>
                   <div class="row">
                     <div class="col col-sm-12 mt-3 md-follow text-center">
-                      <a data-toggle="modal" data-target="#request-modal" class="follow "><strong><%= user.recievedRequest.length%></strong> Requests</a>
-                      <a data-toggle="modal" data-target="#follow-modal" class="follow "><strong><%= user.follow.length%></strong> followers</a>
-                      <a data-toggle="modal" data-target="#following-modal"class="follow"><strong><%= user.following.length%></strong> followings</a>
+                      <a data-toggle="modal" data-target="#follow-modal" class="follow followList" ><strong><%= user.follow.length%></strong> followers</a>
+                      <a data-toggle="modal" data-target="#following-modal"class="follow followingList" ><strong><%= user.following.length%></strong> followings</a>
                     </div>
                   </div>
                 </div> 
@@ -96,9 +95,8 @@
             <div class="row sm-follow">
               <div class="col col-sm-12 mt-3  text-center">
                 <div style="border-bottom: 1px solid #8f8888;"></div>
-                <a data-toggle="modal" data-target="#request-modal" class="s-follow "><strong><%= user.recievedRequest.length%></strong> Requests</a>
-                <a data-toggle="modal" data-target="#follow-modal" class="s-follow "><strong><%= user.follow.length%></strong> followers</a>
-                <a data-toggle="modal" data-target="#following-modal"class="s-follow"><strong><%= user.following.length%></strong> followings</a>
+                <a data-toggle="modal" data-target="#follow-modal" class="s-follow followList" ><strong><%= user.follow.length%></strong> followers</a>
+                <a data-toggle="modal" data-target="#following-modal"class="s-follow followingList" ><strong><%= user.following.length%></strong> followings</a>
                 <div style="border-bottom: 1px solid #8f8888;"></div>
               </div>
             </div>
@@ -133,57 +131,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <ul class="coloums">
+        <ul class="coloums" id="followListResult">
          
-          <li class="dropdown-item list">
-            <div class="list-img">
-              <img src="./images/my.jpg" alt="profile">
-            </div>
-            <div class="list-content">
-              <div><strong>Rohit Kumar</strong></div>
-              <div>College Name</div>
-            </div>
-            <div class="list-btn">
-              <button class="btn btn-primary">follow</button>
-            </div>
-          </li>
-          <li class="dropdown-item list">
-            <div class="list-img">
-              <img src="./images/my.jpg" alt="profile">
-            </div>
-            <div class="list-content">
-              <div><strong>Smile</strong></div>
-              <div>College Name</div>
-            </div>
-            <div class="list-btn">
-              <button class="btn btn-light">following</button>
-            </div>
-          </li>
-          <li class="dropdown-item list">
-            <div class="list-img">
-              <img src="./images/my.jpg" alt="profile">
-            </div>
-            <div class="list-content">
-              <div><strong>Rohit Kumar</strong></div>
-              <div>College Name</div>
-            </div>
-            <div class="list-btn">
-              <button class="btn btn-primary">follow</button>
-            </div>
-          </li>
-          <li class="dropdown-item list">
-            <div class="list-img">
-              <img src="./images/my.jpg" alt="profile">
-            </div>
-            <div class="list-content">
-              <div><strong>Rohit Kumar</strong></div>
-              <div>College Name</div>
-            </div>
-            <div class="list-btn">
-              <button class="btn btn-primary">follow</button>
-            </div>
-          </li>
-         
+           <!-- follow list here -->
+       
         </ul>
       </div>
     </div>
@@ -201,153 +152,16 @@
             </button>
           </div>
           <div class="modal-body">
-            <ul class="coloums">
-              <li class="dropdown-item list">
-                <div class="list-img">
-                  <img src="./images/my.jpg" alt="profile">
-                </div>
-                <div class="list-content">
-                  <div><strong>Rohit Kumar</strong></div>
-                  <div>College Name</div>
-                </div>
-                <div class="list-btn">
-                  <button class="btn btn-light">following</button>
-                </div>
-              </li>
-              <li class="dropdown-item list">
-                <div class="list-img">
-                  <img src="./images/my.jpg" alt="profile">
-                </div>
-                <div class="list-content">
-                  <div><strong>Smile</strong></div>
-                  <div>College Name</div>
-                </div>
-                <div class="list-btn">
-                  <button class="btn btn-light">following</button>
-                </div>
-              </li>
-              <li class="dropdown-item list">
-                <div class="list-img">
-                  <img src="./images/my.jpg" alt="profile">
-                </div>
-                <div class="list-content">
-                  <div><strong>Rohit Kumar</strong></div>
-                  <div>College Name</div>
-                </div>
-                <div class="list-btn">
-                  <button class="btn btn-light">following</button>
-                </div>
-              </li>
-              <li class="dropdown-item list">
-                <div class="list-img">
-                  <img src="./images/my.jpg" alt="profile">
-                </div>
-                <div class="list-content">
-                  <div><strong>Smile</strong></div>
-                  <div>College Name</div>
-                </div>
-                <div class="list-btn">
-                  <button class="btn btn-light">following</button>
-                </div>
-              </li>
-              <li class="dropdown-item list">
-                <div class="list-img">
-                  <img src="./images/my.jpg" alt="profile">
-                </div>
-                <div class="list-content">
-                  <div><strong>Rohit Kumar</strong></div>
-                  <div>College Name</div>
-                </div>
-                <div class="list-btn">
-                  <button class="btn btn-light">following</button>
-                </div>
-              </li>
-              <li class="dropdown-item list">
-                <div class="list-img">
-                  <img src="./images/my.jpg" alt="profile">
-                </div>
-                <div class="list-content">
-                  <div><strong>Smile</strong></div>
-                  <div>College Name</div>
-                </div>
-                <div class="list-btn">
-                  <button class="btn btn-light">following</button>
-                </div>
-              </li>
-              <li class="dropdown-item list">
-                <div class="list-img">
-                  <img src="./images/my.jpg" alt="profile">
-                </div>
-                <div class="list-content">
-                  <div><strong>Smile</strong></div>
-                  <div>College Name</div>
-                </div>
-                <div class="list-btn">
-                  <button class="btn btn-light">following</button>
-                </div>
-              </li>
-              <li class="dropdown-item list">
-                <div class="list-img">
-                  <img src="./images/my.jpg" alt="profile">
-                </div>
-                <div class="list-content">
-                  <div><strong>Smile</strong></div>
-                  <div>College Name</div>
-                </div>
-                <div class="list-btn">
-                  <button class="btn btn-light">following</button>
-                </div>
-              </li>
+            <ul class="coloums" id="followingListResult">
+              
+             <!-- following list here -->
+
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-        <!-- Request Modal -->
-<div class="modal fade" id="request-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Follow Requests</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <ul class="coloums">
-         
-          <li class="dropdown-item list">
-            <div class="list-img">
-              <img src="./images/my.jpg" alt="profile">
-            </div>
-            <div class="list-content">
-              <div><strong>Rohit Kumar</strong></div>
-              <div>Malviya National Institute of Technology Jaipur</div>
-            </div>
-            <div class="list-btn">
-              <button class="btn btn-primary">Confirm</button>
-              <button class="btn btn-del">Delete</button>
-            </div>
-          </li>
-          <li class="dropdown-item list">
-            <div class="list-img">
-              <img src="./images/my.jpg" alt="profile">
-            </div>
-            <div class="list-content">
-              <div><strong>Smile</strong></div>
-              <div>College Name</div>
-            </div>
-            <div class="list-btn">
-              <button class="btn btn-primary">Confirm</button>
-              <button class="btn btn-del">Delete</button>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!--log out Modal -->
 <div class="modal" tabindex="-1" id="logout-modal">
@@ -379,28 +193,28 @@
 <script>
   $(document).ready(()=>{
      
+    //serach
     $('#userSearch').on("keyup", function() {
        const username = $(this).val();
        $.post('/explore', { data: username },(res)=>{
             var Data = '';
             $.each(res, (key, value) => {
+              if("<%=user.username%>" !=value.username){
                     Data += `<a href='/${value.username}' ><li class='list'>  <div class='list-img'>`;
                     Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
                     Data += "<div class='list-content'> <div><strong>" + value.username + "</strong></div>";
                     Data += "<div>" + value.collegeName + "</div>";
                     Data += "</div>  </li> </a>"; 
+              }
                 });
-                $('#searchResult').html(Data);
-            
+                $('#searchResult').html(Data);   
         });
     });  
-    
     
     //active user
     const socket = io();
     var username= "<%=user.username%>";
     socket.emit('newUser',username);
-
     $('.fa-toggle-on').click(()=>{
       $.post('/status',(res)=>{
             var Data = '';
@@ -415,9 +229,82 @@
                         }
                 });
                 $('#statusResult').html(Data);
-            
         });
       });
+     // follow list
+      $('.followList').click(()=>{
+        const username= "<%=user.username%>"; 
+        const following= "<%=user.following%>";
+      
+        $.post('./profile/followList', { username },(res)=>{
+          var Data = '';
+            $.each(res, (key, value) => {
+                Data += `<a href='/${value.username}' ><li class='list'> <div class='list-img'>`;
+                Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
+                Data += "<div class='list-content'> <div><strong>" + value.username + "</strong> </div>";
+                Data += `<div>${ value.collegeName }</div></div>`;
+                if(following.indexOf(value._id)== -1){
+                  Data += '<div class="list-btn" id='+value._id+'><button class="btn btn-primary" onclick="doFollow(\''+value.username+'\',\''+value._id+'\')">Follow Back</button></div> '; 
+                } else{
+                  Data +='<div class="list-btn" id='+value._id+'><button class="btn btn-danger" onclick="doUnfollow(\''+value.username+'\',\''+value._id+'\')">Unfollow</button></div> '; 
+                }
+                Data += "</li> </a>";                                  
+            });
+            $('#followListResult').html(Data);
+        }); 
+      });
+      // following list
+      $('.followingList').click(()=>{
+        const username= "<%=user.username%>"; 
+        const follow= "<%=user.follow%>";
+      
+        $.post('./profile/followingList', { username },(res)=>{
+          var Data = '';
+            $.each(res, (key, value) => {
+              
+                Data += `<a href='/${value.username}' ><li class='list'> <div class='list-img'>`;
+                Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
+                Data += "<div class='list-content'> <div><strong>" + value.username + "</strong> </div>";
+                Data += `<div>${ value.collegeName }</div></div>`;
+                Data +='<div class="list-btn" id='+value._id+'><button class="btn btn-danger" onclick="doUnfollow(\''+value.username+'\',\''+value._id+'\')">Unfollow</button></div> '; 
+                Data += "</li> </a>";                                  
+            });
+            $('#followingListResult').html(Data);
+        }); 
+      });
+
+    //follow
+    doFollow = function(username,id){
+      const data={
+        from:"<%=user.username%>",
+        to: username
+      };
+      $.post('./profile/follow', { data },(res)=>{
+        var Data = '';
+        if(res === true){
+              Data += '<button class="btn btn-danger" onclick="doUnfollow(\''+username+'\',\''+id+'\')">Unfollow</button>';
+              $(`#${id}`).html(Data);
+              $('.followingList > strong').text(Number($('.followingList > strong').html())+1);
+              location.reload();
+        }  
+        }); 
+    };
+    //unfollow
+    doUnfollow = function(username,id){
+      const data={
+        from:"<%=user.username%>",
+        to: username
+      };
+      $.post('./profile/unfollow', { data },(res)=>{
+        var Data = '';
+        if(res === true){
+              Data += '<button class="btn btn-primary" onclick="doFollow(\''+username+'\',\''+id+'\')">Follow Back</button>';
+              $(`#${id}`).html(Data);
+              $('.followingList > strong').text(Number($('.followingList > strong').html())-1);
+              location.reload();
+        }  
+        }); 
+    };
     });
 </script>
 </body>

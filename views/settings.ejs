@@ -257,11 +257,13 @@
               $.post('/explore', { data: username },(res)=>{
                     var Data = '';
                     $.each(res, (key, value) => {
-                            Data += `<a href='/${value.username}' ><li class='dropdown-item list'>  <div class='list-img'>`;
+                      if("<%=user.username%>" !=value.username){
+                            Data += `<a href='/${value.username}' ><li class=' list'>  <div class='list-img'>`;
                             Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
                             Data += "<div class='list-content'> <div><strong>" + value.username + "</strong></div>";
                             Data += "<div>" + value.collegeName + "</div>";
                             Data += "</div>  </li> </a>"; 
+                      }
                         });
                         $('#searchResult').html(Data);
                     
