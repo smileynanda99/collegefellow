@@ -23,17 +23,19 @@ router.post('/profile/follow', ensureAuthenticated,async function(req, res) {
         if(!err){
            toId=result._id;
         }});
-    User.findByIdAndUpdate(toId, { $push: { follow :fromId }},{ upsert: true, new: true },(err)=>{
-        if(err){
-            console.log(err)
-            res.send(false);
-        }});
-    User.findByIdAndUpdate(fromId, { $push: { following :toId }},{ upsert: true, new: true },(err)=>{
-        if(err){
-            console.log(err)
-            res.send(false);
-        }});
-    res.send(true);
+    if(toId != null && fromId != null){
+        User.findByIdAndUpdate(toId, { $push: { follow :fromId }},{ upsert: true, new: true },(err)=>{
+            if(err){
+                console.log(err)
+                res.send(false);
+            }});
+        User.findByIdAndUpdate(fromId, { $push: { following :toId }},{ upsert: true, new: true },(err)=>{
+            if(err){
+                console.log(err)
+                res.send(false);
+            }});
+        res.send(true);
+    }
 });
 //unfollow
 router.post('/profile/unfollow', ensureAuthenticated,async function(req, res) {
