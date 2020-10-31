@@ -1,5 +1,4 @@
 const mongoose   = require('mongoose');
-const ChatRoom = require('./chatRoom');
 
 const userSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -20,7 +19,6 @@ const userSchema = new mongoose.Schema({
     bio: String,
     follow:[ this],
     following:[ this],
-    chatRoom:[{type: mongoose.Schema.Types.ObjectId, ref: 'ChatRoom'}],
     lastSeen: Number,
     active: Boolean,
     status: Boolean,

@@ -1,14 +1,26 @@
 const mongoose   = require('mongoose');
 const User = require('./user');
 
-const chatSchema = new mongoose.Schema({
+//msg schema
+const chatMsgSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    chat_id: String,
     sender: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     receiver: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     msg: String,
     time: Number
 });
+const ChatMsg = mongoose.models.ChatMsg || mongoose.model('ChatMsg', chatMsgSchema);
 
-const ChatRoom = mongoose.models.ChatRoom || mongoose.model('ChatRoom', chatSchema);
-module.exports = ChatRoom;
+//chatTable schema
+const chatTableSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    chat_id:{
+        type: 'String',
+        unique: true,
+      },
+    chats:[{type: mongoose.Schema.Types.ObjectId, ref: 'ChatMsg'}],
+});
+const ChatRoom = mongoose.models.ChatRoom || mongoose.model('ChatRoom', chatTableSchema);
+
+
+module.exports = {ChatRoom, ChatMsg};
