@@ -92,30 +92,3 @@ server.listen(PORT, () => {
     console.log(`server is running at port :${PORT}`);
 })
 
-
-// async function call(){
-//   var ownId;
-//   var otherId;
-
-//   await User.findOne({name:'RK'},(err, result) => {
-//       if(!err){
-//           console.log(result._id);
-//           ownId=result._id;
-//       }
-//   });
-  
-//   await User.findOne({name:'smile'},(err, result) => {
-//       if(!err){
-//           console.log(result._id);
-//           otherId=result._id;
-//       }
-//   });
-
-//   User.findByIdAndUpdate(ownId, { $push: { follow :otherId }},{ upsert: true, new: true },(err)=>
-//   console.log(err)
-//   );
-//    User.findByIdAndUpdate(otherId, { $push: { following :ownId }},{ upsert: true, new: true },(err)=>
-//   console.log(err)
-//   );
-// }
-// // call();
