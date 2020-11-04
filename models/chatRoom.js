@@ -13,10 +13,7 @@ const ChatMsg = mongoose.models.ChatMsg || mongoose.model('ChatMsg', chatMsgSche
 
 //chatTable schema
 const chatTableSchema = new mongoose.Schema({
-    chat_id:{
-        type: 'String',
-        unique: true,
-    },
+    _id: mongoose.Schema.Types.ObjectId,
     chats:[{type: mongoose.Schema.Types.ObjectId, ref: 'ChatMsg'}],
 });
 const ChatRoom = mongoose.models.ChatRoom || mongoose.model('ChatRoom', chatTableSchema);

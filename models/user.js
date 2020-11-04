@@ -1,12 +1,12 @@
-const mongoose   = require('mongoose');
-const ChatRoom = require('./chatRoom');
+const mongoose = require('mongoose');
+const {ChatRoom} = require('./chatRoom');
 
 const userSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     username:{
         type: 'String',
         unique: true,
-      },
+    },
     collegeEmail:{
         type: String,
         unique: true,
@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     phoneNo: Number,
     collegeName: String,
     gender: String,
-    chatList:[{type: String, ref: 'ChatRoom'}],
+    chatList:[{userId:this, chatId:{type: mongoose.Schema.Types.ObjectId, ref: 'ChatRoom'}}],
     bio: String,
     follow:[ this],
     following:[ this],

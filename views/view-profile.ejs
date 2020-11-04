@@ -83,7 +83,7 @@
                     <%  if(user.following.length===0 || user.following.indexOf(profile._id) ==-1) { %>
                       <button style="color: white;" class="btn btn-primary" onclick="doFollows()">Follow</button> 
                     <% } else {%>
-                      <a href="./chat" style="color: white;" class="btn btn-primary hi">Chat</a> 
+                      <a href="/chat/<%=profile._id%>" style="color: white;" class="btn btn-primary hi">Chat</a> 
                       <button style="color: white;" class="btn btn-logout ml-2" onclick="doUnfollows()" >Unfollow</button> 
                     <% } %>
                   </div>
@@ -231,6 +231,7 @@
               Data += "<button style='color: white;' class='btn btn-logout ml-2' onclick='doUnfollows()' >Unfollow</button>";
               $('#btnSession').html(Data);
               $('.followNo').text(Number($('.followNo').html())+1);
+              location.reload();
         }  
         }); 
     };
@@ -246,6 +247,7 @@
               Data += "<button style='color: white;' class='btn btn-primary' onclick='doFollows()' >Follow</button>";
               $('#btnSession').html(Data);
               $('.followNo').text(Number($('.followNo').html())-1);
+              location.reload();
         }  
         }); 
     };
@@ -264,7 +266,7 @@
                             Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
                             Data += "<div class='list-content'> <div><strong>" + value.username + "</strong> </div>";
                             Data += "<div>Active now</div> <div class='online-list'></div> </div>";
-                            Data += "<div class='list-btn'> <button class='btn btn-primary'>chat</button>";
+                            Data += `<div class='list-btn'> <a class='btn btn-primary' href='/chat/${value._id}'>chat</a>`;
                             Data += "</div>  </li>"; 
                         }
                 });

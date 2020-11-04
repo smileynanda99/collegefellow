@@ -72,9 +72,7 @@ router.post('/register',async function(req, res) {
                     otp: emailToken,
                     status: false
                 });
-                console.log(newUser);
                 newUser.save().then(user => {
-                console.log(user);
                 // sendEmail(msg);
                 req.flash('success_msg','Thanks for Register go with verify email');
                 res.redirect('./login');

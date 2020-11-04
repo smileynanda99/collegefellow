@@ -315,7 +315,7 @@
                             Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
                             Data += "<div class='list-content'> <div><strong>" + value.username + "</strong> </div>";
                             Data += "<div>Active now</div> <div class='online-list'></div> </div>";
-                            Data += "<div class='list-btn'> <button class='btn btn-primary'>chat</button>";
+                            Data += `<div class='list-btn'> <a class='btn btn-primary' href='/chat/${value._id}'>chat</a>`;
                             Data += "</div>  </li>"; 
                             }
                         });

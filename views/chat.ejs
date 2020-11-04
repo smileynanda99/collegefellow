@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Fellow</title>
     <%- include("cdn/style") -%>
-    <link rel="stylesheet" href="./css/styles.css"  >
-    <link rel="stylesheet" href="./css/chat.css"  >
-    <link rel="stylesheet" href="./css/active.css"  >
+    <link rel="stylesheet" href="/css/styles.css"  >
+    <link rel="stylesheet" href="/css/chat.css"  >
+    <link rel="stylesheet" href="/css/active.css"  >
 </head>
 <body>
    
@@ -17,7 +17,7 @@
       <nav class="navbar navbar-expand navbar-light" style="background-color:  #081120;" aria-expanded="false">
         <!-- LOGO  -->
         <a class="navbar-brand" href="#">
-            <img style="width: 50px; height: 50px;" src="./images/logo-icon.png">
+            <img style="width: 50px; height: 50px;" src="/images/logo-icon.png">
             <span class="align-bottom">CF</span> 
         </a>
         <!-- navbar menu -->
@@ -53,7 +53,7 @@
                 <i class="fa fa-paper-plane" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-white" href="profile" >
+              <a class="nav-link text-white" href="/profile" >
                 <i class="fa fa-user-circle" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
             </li>
           </ul>
@@ -82,7 +82,7 @@
                 <ul id="users" style="margin-top: 1rem;">
                       <li>
                           <div class="user-header">
-                            <img src="./images/my.jpg" style="width: 50px; border-radius: 50%;">
+                            <img src="/images/my.jpg" style="width: 50px; border-radius: 50%;">
                             <strong class="align-top" style="margin-left: 5px;"> Smile</strong>
                           </div>
                           <div class="user-footer">
@@ -92,7 +92,7 @@
                     </li>
                     <li>
                          <div class="user-header">
-                            <img src="./images/my.jpg" style="width: 50px; border-radius: 50%;">
+                            <img src="/images/my.jpg" style="width: 50px; border-radius: 50%;">
                             <strong class="align-top" style="margin-left: 5px;"> Danny Smith</strong>
                           </div>
                           <div class="user-footer">
@@ -102,7 +102,7 @@
                     </li>
                     <li>
                         <div class="user-header">
-                           <img src="./images/my.jpg" style="width: 50px; border-radius: 50%;">
+                           <img src="/images/my.jpg" style="width: 50px; border-radius: 50%;">
                            <strong class="align-top" style="margin-left: 5px;"> John</strong>
                          </div>
                          <div class="user-footer">
@@ -112,7 +112,7 @@
                    </li>
                    <li>
                       <div class="user-header">
-                         <img src="./images/my.jpg" style="width: 50px; border-radius: 50%;">
+                         <img src="/images/my.jpg" style="width: 50px; border-radius: 50%;">
                          <strong class="align-top" style="margin-left: 5px;"> Brad </strong>
                       </div>
                       <div class="user-footer">
@@ -142,9 +142,9 @@
                           <span id="action_menu_btn"><i class="fa fa-ellipsis-v"></i></span>
                           <div class="action_menu">
                             <ul>
-                              <li><i class="fas fa-user-circle"></i> View profile</li>
-                              <li><i class="fas fa-trash"></i> Delete chat</li>
-                              <li><i class="fas fa-ban"></i> Block</li>
+                              <li><i class="fa fa-user-circle"></i> View profile</li>
+                              <li><i class="fa fa-trash"></i> Delete chat</li>
+                              <li><i class="fa fa-ban"></i> Block</li>
                             </ul>
                           </div>
                       </div>
@@ -237,7 +237,7 @@
                                     Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
                                     Data += "<div class='list-content'> <div><strong>" + value.username + "</strong> </div>";
                                     Data += "<div>Active now</div> <div class='online-list'></div> </div>";
-                                    Data += "<div class='list-btn'> <button class='btn btn-primary'>chat</button>";
+                                    Data +=  `<div class='list-btn'> <a class='btn btn-primary' href='/chat/${value._id}'>chat</a>`;
                                     Data += "</div>  </li>"; 
                                 }
                         });
@@ -245,6 +245,7 @@
                     
                 });
               });
+              
         });
         
     </script>
