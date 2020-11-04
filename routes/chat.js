@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 
 router.get('/chat',ensureAuthenticated, function(req, res) {
-    res.render("chat",{user:req.user});
+    res.render("chat",{user:req.user, chatwith: ''});
 });
 
 router.get('/chat/:id',ensureAuthenticated,async function(req, res) {

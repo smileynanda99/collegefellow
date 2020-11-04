@@ -91,16 +91,6 @@
                           </div>
                     </li>
                     <li>
-                         <div class="user-header">
-                            <img src="/images/my.jpg" style="width: 50px; border-radius: 50%;">
-                            <strong class="align-top" style="margin-left: 5px;"> Danny Smith</strong>
-                          </div>
-                          <div class="user-footer">
-                            <p class="text-smaller text-muted mb-0">Active 5m ago</p>
-                            <span class="online_icon offline"></span>
-                          </div>
-                    </li>
-                    <li>
                         <div class="user-header">
                            <img src="/images/my.jpg" style="width: 50px; border-radius: 50%;">
                            <strong class="align-top" style="margin-left: 5px;"> John</strong>
@@ -110,17 +100,7 @@
                            <span class="online_icon offline"></span>
                          </div>
                    </li>
-                   <li>
-                      <div class="user-header">
-                         <img src="/images/my.jpg" style="width: 50px; border-radius: 50%;">
-                         <strong class="align-top" style="margin-left: 5px;"> Brad </strong>
-                      </div>
-                      <div class="user-footer">
-                        <p class="text-smaller text-muted mb-0">Active 11h ago</p>
-                        <span class="online_icon offline"></span>
-                      </div>
-                    </li>
-                   
+                
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->
@@ -129,6 +109,19 @@
                 <div class="row justify-content-center h-100 ">
                     <div class="col" style="padding: 0px;">
                       <!--chat header-->
+                      <% if(chatwith === '') { %>
+                        <div class="container text-center mt-5">
+                          
+                            <i class="fa fa-paper-plane" style="font-size:100px;
+                                                                color: #D03737;
+                                                                border: 3px solid black;
+                                                                padding: 20px;
+                                                                padding-right: 30px;
+                                                                border-radius: 50%;"></i>
+                           <h1 class="mt-3">Welcome To College Fellow !!!</h1>
+                           <h4>Send Message to your Friends.</h4>
+                        </div>
+                      <% } else {%>
                       <div class="card-header">
                         <div class="d-flex bd-highlight">
                           <div class="img_cont">
@@ -183,6 +176,8 @@
                         </div>
                       </div> 
 
+                    <% }%>
+
                     </div>
                 </div>
               </div>
@@ -194,7 +189,6 @@
     <!-- JQuery -->
    <%- include("cdn/script") -%>
    <script src="/socket.io/socket.io.js" ></script>
-   <script src="../js/message.js" type="text/javascript"></script>  
     <script>
       	$(document).ready(function(){
             $('#action_menu_btn').click(function(){
@@ -223,11 +217,11 @@
                 });
             }); 
 
-            //active user
+            //socket clinet side
             const socket = io();
             var username= "<%=user.username%>";
             socket.emit('newUser',username);
-
+            //active user
             $('.fa-toggle-on').click(()=>{
               $.post('/status',(res)=>{
                     var Data = '';
@@ -241,10 +235,12 @@
                                     Data += "</div>  </li>"; 
                                 }
                         });
-                        $('#statusResult').html(Data);
-                    
+                        $('#statusResult').html(Data); 
                 });
-              });
+            });
+
+
+
               
         });
         
