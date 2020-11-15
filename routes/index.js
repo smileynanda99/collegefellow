@@ -23,7 +23,7 @@ router.post('/', (req, res) =>{
         <p>Message: ${message}</p>`
       }
     sendEmail(msg);  
-    res.redirect('/index');
+    res.redirect('/');
 });
 
 module.exports = router;

@@ -62,9 +62,51 @@ router.get('/chat/:id',ensureAuthenticated,async function(req, res) {
             }
         });
          
-    }    
-
+    }
 });
 
+
+router.post('/room',ensureAuthenticated,async function(req, res) {
+    const id = req.body.id;
+    const info = await User.
+        findOne({username: req.user.username}).
+        exec();
+        // console.log(info);
+        info.chatList.forEach(element => {
+            if(element.userId ==id){
+                res.send(element.chatId);
+            }
+        }); 
+});
+
+router.post('/chatWith',ensureAuthenticated,async function(req, res) {
+    const id = req.body.id;
+    await User.
+        findOne({_id: id}).
+        exec((err,result)=>{
+            if(!err){
+                res.send(result);
+            }
+        });
+        
+});
+
+router.post('/chatList',ensureAuthenticated,async function(req, res) {
+    
+    await User.
+    findOne({ username: req.user.username}).
+    populate({
+        path: 'chatList.userId'
+    }).
+    exec((err,result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            // console.log(result);
+            res.send(result.chatList);
+        }
+    })
+
+});
 
 module.exports = router;

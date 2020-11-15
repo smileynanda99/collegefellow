@@ -143,7 +143,7 @@ router.get('/logout', (req, res) => {
             console.log(err,"louout err");
         }
         res.clearCookie('sessionId');
-        res.redirect('/index');
+        res.redirect('/');
     })
 });
 

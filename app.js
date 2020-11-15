@@ -63,7 +63,7 @@ app.use((req, res, next)=>{
 })
 
 //set routes
-app.use('/index', require('./routes/index'));
+app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/', require('./routes/profile'));
 app.use('/', require('./routes/chat'));
