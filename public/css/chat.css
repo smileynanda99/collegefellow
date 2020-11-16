@@ -141,7 +141,8 @@ body,html{
 
 .card-header{
        border-radius: 15px 15px 0 0 !important;
-	   border-bottom: 0 !important;
+       border-bottom: 0 !important;
+       padding: 0.6em;
 }
 
 .card-footer{

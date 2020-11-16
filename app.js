@@ -13,6 +13,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
 //import model
 const User = require('./models/user');
+const {ChatRoom, ChatMsg }= require('./models/chatRoom');
 require('./config/passport-config')(passport);
 
 //define port
@@ -80,7 +81,34 @@ io.on('connection', socket => {
        socket.id=username;
        await User.findOneAndUpdate({username:socket.id},{active:true});
   });
+  socket.on('joinChat',({username,room})=>{
+       const user = {username, room};
+       socket.join(user.room);
+      //  console.log(user);
+  });
+  socket.on('chatMessage',(msg, id,room)=>{
+    
+      io.emit('message',{msg, id, room});
+      const msgInfo = new ChatMsg({
+        _id:new mongoose.Types.ObjectId(),
+        sender: mongoose.Types.ObjectId(id),
+        msg: msg,
+        time: new Date().getTime()
 
+      });
+      msgInfo.save((err,res)=>{
+        if(!err){
+          ChatRoom.findOneAndUpdate({_id: room},{$push:{chats:mongoose.Types.ObjectId(res._id)}},{ upsert: true, new: true },(err,res)=>{
+            if(err){
+              console.log(err);
+            }
+          })
+        }
+        else{
+          console.log(err);
+        }
+      });
+  });
   socket.on('disconnect', async() => {
     await User.findOneAndUpdate({username:socket.id},{active:false, lastSeen:new Date().getTime()});
   });

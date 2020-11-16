@@ -105,7 +105,7 @@
                       <% } else {%>
                       <div class="card-header">
                         <div class="d-flex bd-highlight" id="chatWith">
-                          
+                         
                           <!-- <span id="action_menu_btn"><i class="fa fa-ellipsis-v"></i></span>
                           <div class="action_menu">
                             <ul>
@@ -117,39 +117,25 @@
                       </div>
                       <div class="chat-divider"></div>
                       <!--chat cantainer-->
-                      <div class="chat-container">
-                        <div class="d-flex justify-content-start mb-4">
-                          <div class="img_cont_msg">
-                            <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
-                          </div>
-                          <div class="msg_cotainer">
-                            Hi, how are you Rohit?
-                            <span class="msg_time">8:40 AM</span>
-                          </div>
-                        </div>
-                        <div class="d-flex justify-content-end mb-4">
-                          <div class="msg_cotainer_send">
-                            Hi Smile i am good tnx how about you?
-                            <span class="msg_time_send">8:55 AM</span>
-                          </div>
-                          <div class="img_cont_msg">
-                        <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
-                          </div>
-                        </div>
+                      <div class="chat-container" id="msgContainer">
+                          <!-- chat show here -->
                       </div>
+                    </div>
                       <!--Message send form container -->
-                      <div class="card-footer ">
-                        <div class="input-group"> 
-                          <!-- <div class="input-group-append">
-                            <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
-                          </div> -->
-                          <input type="text" name="" class="form-control type_msg" placeholder="Type your message..."></input>
-                          <div class="input-group-append">
-                            <span class="input-group-text send_btn"><i class="fa fa-location-arrow"></i></span>
+                      <form id='chat-form'>
+                        <div class="card-footer ">
+                          <div class="input-group"> 
+                            <!-- <div class="input-group-append">
+                              <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+                            </div> -->
+                            <input type="text" name="" class="form-control type_msg" id="ipMessage" placeholder="Type your message..." autocomplete=off></input>
+                            <div class="input-group-append">
+                              <button class="input-group-text send_btn btn" type="submit"><i class="fa fa-location-arrow"></i></button>
+                            </div>
                           </div>
-                        </div>
-                      </div> 
-
+                        </div> 
+                      </form>
+                      
                     <% }%>
 
                     </div>
@@ -166,6 +152,7 @@
    <script src="/socket.io/socket.io.js" ></script>
     <script>
       	$(document).ready(function(){
+            const chatForm = document.getElementById('chat-form');
             $('#action_menu_btn').click(function(){
               $('.action_menu').toggle();
             });
@@ -240,19 +227,108 @@
                 });
                 $('#users').html(info); 
             });
-
             
-                            
-                            
-                    
+                  
                          
             //join specific room
             if("<%=chatwith._id%>"){
-              $.post('/room',{id:"<%=chatwith._id%>"},(res)=>{
-                    console.log(res);
+              var cphoto='';
+              var n = 0;
+              var height =0;
+              const username ="<%=user.username%>";
+              const id ="<%=user._id%>";
+              var room = '';
+              $.post('/room',{id:"<%=chatwith._id%>"},(chatRoomID)=>{
+                    room= chatRoomID;
+                    // console.log(chatRoomID+" hvhg "+room);
+                    socket.emit('joinChat', {username, room}); // username,chatRoomID
+                    //chatshow
+                    $.post('/chatMessage',{room},(res)=>{
+                      // console.log(res);
+                      $('#msgContainer').html(showChat(res));
+                      // Scroll down
+                      $(".chat-container").stop().animate({ scrollTop: $(".chat-container")[0].scrollHeight}, 100);
+                      
+                    });
               });
+              //scroling (old msg)
+              $(".chat-container").scroll(e => {
+                
+                // console.log(scroll ,n);
+                const {scrollTop, scrollHeight, clientHeight} =  $(".chat-container")[0];
+                // console.log({scrollTop,scrollHeight, clientHeight});
+                
+                if(scrollTop==0) {
+                  n++;
+                  $.post('/oldChatMessage',{room, scroll: n},(res)=>{
+                      // console.log(res);
+                      // console.log("true",n);
+                      
+                      $('#msgContainer').prepend(showChat(res)); 
+                      if($(".chat-container")[0].scrollHeight>height){
+                        $(".chat-container")[0].scrollTop+=200;
+                        // console.log(height, scrollHeight);
+                      }
+                      height = scrollHeight;
+                    });
+                }
+                
+              });
+              // Message submit
+              chatForm.addEventListener('submit', e => {
+                e.preventDefault();
+
+                // Get message text
+                let msg = e.target.elements.ipMessage.value;
+                
+                msg = msg.trim();
+                
+                if (!msg){
+                  return false;
+                }
+
+                // Emit message to server
+                socket.emit('chatMessage', msg, id, room);
+                var data ='';
+                  data +=`<div class="d-flex justify-content-end mb-4">`; 
+                  data +=`<div class="msg_cotainer_send"> ${msg}`
+                  var t = moment(new Date().getTime()).format('LT');
+                  data +=`<span class="msg_time ml-2">${t}</span>
+                                    </div>
+                                    </div>`;  
+                  $('#msgContainer').append(data); 
+                   // Scroll down
+                   $(".chat-container").stop().animate({ scrollTop: $(".chat-container")[0].scrollHeight}, 100);
+                // Clear input
+                e.target.elements.ipMessage.value = '';
+                e.target.elements.ipMessage.focus();
+              }); 
+              
+              // Message from server
+              socket.on('message', message => {
+                if(message.room==room && message.id!="<%=user._id%>" ){
+                  // console.log(message);
+                  // incoming message
+                  var data ='';
+                  data +=`<div class="d-flex justify-content-start mb-4">
+                                      <div class="img_cont_msg">`; 
+                  data +=`<img src='/uploads-profile/${ cphoto }' class="rounded-circle user_img_msg">
+                                      </div>
+                                      <div class="msg_cotainer"> ${message.msg}`
+                  var t = moment(new Date().getTime()).format('LT');
+                  data +=`<span class="msg_time ml-2">${t}</span>
+                                    </div>
+                                    </div>`;  
+                  $('#msgContainer').append(data);                                         
+                  // Scroll down
+                  $(".chat-container").stop().animate({ scrollTop: $(".chat-container")[0].scrollHeight}, 100);
+                  }
+                
+              });
+              
               $.post('/chatWith',{id:"<%=chatwith._id%>"},(res)=>{
                     var data ='';
+                    cphoto = res.photo;
                     data +=`<div class="img_cont">`
                     data +=`<img src='/uploads-profile/${ res.photo }' class="rounded-circle user_img">`  
                     if(res.active===true){
@@ -280,6 +356,27 @@
                     
                     $('#chatWith').html(data);   
               });
+            }
+            function showChat(res){
+              var data = '';
+              $.each(res.reverse(), (key, value) => {
+                           if(value.sender._id=="<%=chatwith._id%>"){
+                            data +=`<div class="d-flex justify-content-start mb-4">
+                                    <div class="img_cont_msg">`; 
+                            data +=`<img src='/uploads-profile/${ value.sender.photo }' class="rounded-circle user_img_msg">
+                                    </div>
+                                    <div class="msg_cotainer"> ${value.msg}`          
+                           }
+                           else{
+                            data +=`<div class="d-flex justify-content-end mb-4">`; 
+                            data +=`<div class="msg_cotainer_send"> ${value.msg}` 
+                           }
+                           var t = moment(value.time).format('LT');
+                           data +=`<span class="msg_time ml-2">${t}</span>
+                                   </div>
+                                   </div>`;
+                      });
+                      return data;
             }
    
         });

@@ -109,4 +109,39 @@ router.post('/chatList',ensureAuthenticated,async function(req, res) {
 
 });
 
+
+router.post('/chatMessage',ensureAuthenticated,async function(req, res) {
+    const room = req.body.room;
+    await ChatRoom.
+        findOne({_id:mongoose.Types.ObjectId(room) }).
+        populate({path: 'chats',populate: { path: 'sender' }, options: { sort: { 'time': -1 }, limit:7} }).
+        exec((err,result)=>{
+            if(err){
+                console.log(err);
+            }else{
+                // console.log(result);
+                res.send(result.chats);
+            }
+        })
+        
+});
+
+
+router.post('/oldChatMessage',ensureAuthenticated,async function(req, res) {
+    const room = req.body.room;
+    const scroll = Number(req.body.scroll);
+    await ChatRoom.
+        findOne({_id:mongoose.Types.ObjectId(room) }).
+        populate({path: 'chats',populate: { path: 'sender' }, options: { sort: { 'time': -1 },skip: 7*scroll, limit:7} }).
+        exec((err,result)=>{
+            if(err){
+                console.log(err);
+            }else{
+                // console.log(result);
+                res.send(result.chats);
+            }
+        })
+        
+});
+
 module.exports = router;
