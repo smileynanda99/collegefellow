@@ -134,7 +134,7 @@ body,html{
     margin: auto;
     padding-top: 10px;
     overflow-y: scroll;
-    height: calc(64vh);
+    height: calc(63vh);
     margin: 0px 10px;
     
 }
@@ -142,7 +142,8 @@ body,html{
 .card-header{
        border-radius: 15px 15px 0 0 !important;
        border-bottom: 0 !important;
-       padding: 0.6em;
+       padding: 0.4em;
+       padding-bottom: 0px;
 }
 
 .card-footer{
@@ -316,6 +317,50 @@ position: relative;
 
 
 
+.google-loader {
+    display: block;
+    padding: 0px;
+    margin-top: -2px;
+    margin-left: 40px;
+    opacity: 0;
+  }
+.show{
+    opacity: 1;
+}
+  .google-loader span {
+    display: inline-block;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+  }
+  
+ 
+  
+  .google-loader span:nth-child(1) {
+    background: #DB4437;
+    animation: move 1s ease-in-out -0.33s infinite alternate;
+  }
+  
+  .google-loader span:nth-child(2) {
+    background: black;
+    animation: move 1s ease-in-out -0.67s infinite alternate;
+  }
+  
+  .google-loader span:nth-child(3) {
+    background: #DB4437;
+    animation: move 1s ease-in-out -1s infinite alternate;
+  }
+  
+  
+  
+  @keyframes move {
+    from {
+      transform: translateY(-5px);
+    }
+    to {
+      transform: translateY(5px);
+    }
+  }
 
 
 

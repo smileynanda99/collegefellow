@@ -86,6 +86,9 @@ io.on('connection', socket => {
        socket.join(user.room);
       //  console.log(user);
   });
+  socket.on('typing',(room, id)=>{
+     socket.broadcast.emit('typing', room, id);
+  });
   socket.on('chatMessage',(msg, id,room)=>{
     
       io.emit('message',{msg, id, room});

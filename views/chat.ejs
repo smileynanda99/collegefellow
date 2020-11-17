@@ -32,7 +32,7 @@
                   </ul>
                 </div>
             </li>
-            
+
             <li class="nav-item dropdown">
               <a class="nav-link text-white dropdown-toggle" href="#" id="DroownActive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                 <i class="fa fa-bell-o" style="font-size:x-large; margin-left: 1.5rem;" id="noti"></i></a>
@@ -129,6 +129,12 @@
                       <!--chat cantainer-->
                       <div class="chat-container" id="msgContainer">
                           <!-- chat show here -->
+                      </div>
+                      <div class="google-loader" id="loader">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                       </div>
                     </div>
                       <!--Message send form container -->
@@ -346,7 +352,19 @@
                 e.target.elements.ipMessage.value = '';
                 e.target.elements.ipMessage.focus();
               }); 
-              
+              //typing
+              //1.emit
+              $('#ipMessage').bind('keypress', ()=>{
+                  socket.emit('typing',room, id);
+              });
+              //2. listen
+              socket.on('typing',(roomId,userId)=>{
+                
+                if(roomId==room && userId!=id){
+                   $('#loader').addClass('show');
+                   setTimeout(()=>{$('#loader').removeClass('show');},800);
+                }
+              });
               // Message from server
               socket.on('message', message => {
                 if(message.room==room && message.id!="<%=user._id%>" ){
