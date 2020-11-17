@@ -1,7 +1,7 @@
 .dropdown-toggle:after { content: none }
 .active-dropdown.show {
     display: inline-block;
-    width: 380px;
+    width: 340px;
 }
 .active-dropdown{
     position: relative;

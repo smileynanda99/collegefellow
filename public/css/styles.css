@@ -48,3 +48,8 @@ a {
         display: none;
     }
 }
+
+.badge{
+    padding: .3em;
+    font-size: 10px;
+}

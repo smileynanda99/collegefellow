@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport')
 const mongoose = require('mongoose');
 const crypto = require('crypto');
+const Notification = require('../models/notification');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SG_MAIL_API_KEY);
 //import model
@@ -74,8 +75,15 @@ router.post('/register',async function(req, res) {
                 });
                 newUser.save().then(user => {
                 // sendEmail(msg);
-                req.flash('success_msg','Thanks for Register go with verify email');
-                res.redirect('./login');
+                
+                    const noti = new Notification({
+                        _id: new mongoose.Types.ObjectId(),
+                        user_id: user._id
+                    });
+                    noti.save();
+                    req.flash('success_msg','Thanks for Register go with verify email');
+                    res.redirect('./login');
+                
                 })
                 }
             

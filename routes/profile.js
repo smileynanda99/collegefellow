@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const mongoose = require('mongoose');
+const Notification = require('../models/notification');
 const {  ensureAuthenticated} = require('../config/auth');
 
 
@@ -34,6 +36,11 @@ router.post('/profile/follow', ensureAuthenticated,async function(req, res) {
                 console.log(err)
                 res.send(false);
             }});
+        Notification.findOneAndUpdate({user_id:toId}, { $push: { newFollowing :{ _id: mongoose.Types.ObjectId(fromId) }}},{ upsert: true, new: true },(err)=>{
+                if(err){
+                    console.log(err)
+                    // res.send(false);
+                }});  
         res.send(true);
     }
 });
@@ -85,6 +92,30 @@ router.post('/profile/followingList', ensureAuthenticated, function(req, res) {
     res.send(user.following);
     }); 
 });
+
+router.post('/profile/numNotification', ensureAuthenticated, function(req, res) {
+    const flag = req.body.clear;
+    // console.log(flag, typeof(flag));
+    Notification.
+    findOne({ user_id: req.user._id}).
+    populate({path:'newFollowing._id'}).
+    exec(function (err, user) {
+    if (err) console.log(err);
+    else{
+        // console.log(user);
+        // console.log(flag, typeof(flag));
+        if(flag == "true"){
+            Notification.findOneAndUpdate({user_id: req.user._id},{$set: { newFollowing: [] }}).exec((err,res)=>{
+                if(err){console.log(err);}
+            });
+            // console.log("clean");
+         }
+        res.send(user);  
+    }
+    }); 
+});
+
+
 
 
 
