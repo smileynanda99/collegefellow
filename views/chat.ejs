@@ -130,11 +130,16 @@
                       <div class="chat-container" id="msgContainer">
                           <!-- chat show here -->
                       </div>
-                      <div class="google-loader" id="loader">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                      <div style="display: flex;">
+                        <div class="google-loader" id="loader">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+                        <div class="seen-status">
+                          seen
+                        </div>
                       </div>
                     </div>
                       <!--Message send form container -->
@@ -263,7 +268,11 @@
                     }else{
                       info +=`${ value.userId.name}`;  
                     }
-                    info +=`</strong> </div> <div class='user-footer'> <p class='text-smaller text-muted mb-0'> ` 
+                    info +=`</strong>`;
+                    if(value.chatId.seen == false){
+                      info +=`<span class='badge badge-danger ml-3' id='${value.userId._id}' ><i class='fa fa-commenting'></i></span>`;
+                    }
+                    info +=`</div> <div class='user-footer'> <p class='text-smaller text-muted mb-0'> `;
                     if(value.userId.active===true){
                     info +='Active now';
                     info +=`</p> <span class="online_icon"></span>`;
@@ -294,7 +303,11 @@
                     //chatshow
                     $.post('/chatMessage',{room},(res)=>{
                       // console.log(res);
-                      $('#msgContainer').html(showChat(res));
+                      
+                      if(res.seen === true && String(res.chats[0].sender._id)==id){
+                        $('.seen-status').addClass('show');
+                      }
+                      $('#msgContainer').html(showChat(res.chats));
                       // Scroll down
                       $(".chat-container").stop().animate({ scrollTop: $(".chat-container")[0].scrollHeight}, 100);
                       
@@ -305,15 +318,19 @@
                 
                 // console.log(scroll ,n);
                 const {scrollTop, scrollHeight, clientHeight} =  $(".chat-container")[0];
-                // console.log({scrollTop,scrollHeight, clientHeight});
-                
+                $('.seen-status').removeClass('show')
+                if(scrollTop + clientHeight +5 >= scrollHeight){
+                          $.post('/chatMessage', {room}, res=>{
+                            if(res.seen === true && String(res.chats[0].sender._id)==id){
+                               $('.seen-status').addClass('show');
+                            }
+                          })
+                      }
                 if(scrollTop==0) {
                   n++;
                   $.post('/oldChatMessage',{room, scroll: n},(res)=>{
                       // console.log(res);
-                      // console.log("true",n);
-                      
-                      $('#msgContainer').prepend(showChat(res)); 
+                      $('#msgContainer').prepend(showChat(res.chats)); 
                       if($(".chat-container")[0].scrollHeight>height){
                         $(".chat-container")[0].scrollTop+=200;
                         // console.log(height, scrollHeight);
@@ -362,9 +379,10 @@
                 
                 if(roomId==room && userId!=id){
                    $('#loader').addClass('show');
-                   setTimeout(()=>{$('#loader').removeClass('show');},800);
+                   setTimeout(()=>{$('#loader').removeClass('show');},1000);
                 }
               });
+              
               // Message from server
               socket.on('message', message => {
                 if(message.room==room && message.id!="<%=user._id%>" ){
@@ -380,13 +398,20 @@
                   data +=`<span class="msg_time ml-2">${t}</span>
                                     </div>
                                     </div>`;  
-                  $('#msgContainer').append(data);                                         
+                  $('#msgContainer').append(data);                                    
                   // Scroll down
                   $(".chat-container").stop().animate({ scrollTop: $(".chat-container")[0].scrollHeight}, 100);
                   }
-                
               });
-              
+              $(window).focus(()=>{
+                    socket.emit('read',room , id); 
+              });
+              socket.on('read',(roomId, userId)=>{
+                  if(roomId==room && userId !=id){
+                    $('.seen-status').addClass('show');
+                  }
+              });
+              // upper header of chat section 
               $.post('/chatWith',{id:"<%=chatwith._id%>"},(res)=>{
                     var data ='';
                     cphoto = res.photo;
@@ -441,7 +466,8 @@
             }
    
         });
-        
+        // <div class="d-flex justify-content-end mr-4" style="margin-top:-20px;">seen
+        //                            </div>
     </script>
 </body>
 </html>

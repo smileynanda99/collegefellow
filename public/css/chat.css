@@ -313,9 +313,12 @@ font-size: 10px;
 .msg_head{
 position: relative;
 }
-
-
-
+.seen-status{
+    text-align: right;
+    position: absolute;
+    right: 60px;
+    opacity: 0;
+}
 
 .google-loader {
     display: block;

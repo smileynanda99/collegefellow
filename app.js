@@ -89,6 +89,28 @@ io.on('connection', socket => {
   socket.on('typing',(room, id)=>{
      socket.broadcast.emit('typing', room, id);
   });
+  socket.on('read',async (room, id)=>{
+    await ChatRoom.
+        findOne({_id:mongoose.Types.ObjectId(room) }).
+        populate({path: 'chats',populate: { path: 'sender' }, options: { sort: { 'time': -1 }, limit:2} }).
+        exec((err,result)=>{
+            if(err){
+                console.log(err);
+            }else{
+                // console.log(result.chats[0].sender._id, req.user._id );
+                if(String(result.chats[0].sender._id) !== String(id)){
+                    ChatRoom.findOneAndUpdate({_id: room},{ seen:true},(err,res)=>{
+                        if(err){
+                            console.log(err);
+                        }
+                        // console.log("seen true kr rha hu!!", id);
+                        socket.broadcast.emit('read', room, id);
+                    });
+                }
+            }
+        })
+        
+  });
   socket.on('chatMessage',(msg, id,room)=>{
     
       io.emit('message',{msg, id, room});
@@ -101,7 +123,7 @@ io.on('connection', socket => {
       });
       msgInfo.save((err,res)=>{
         if(!err){
-          ChatRoom.findOneAndUpdate({_id: room},{$push:{chats:mongoose.Types.ObjectId(res._id)}},{ upsert: true, new: true },(err,res)=>{
+          ChatRoom.findOneAndUpdate({_id: room},{$push:{chats:mongoose.Types.ObjectId(res._id)}, seen:false},{ upsert: true, new: true },(err,res)=>{
             if(err){
               console.log(err);
             }

@@ -98,6 +98,9 @@ router.post('/chatList',ensureAuthenticated,async function(req, res) {
     populate({
         path: 'chatList.userId'
     }).
+    populate({
+        path: 'chatList.chatId'
+    }).
     exec((err,result)=>{
         if(err){
             console.log(err);
@@ -120,7 +123,16 @@ router.post('/chatMessage',ensureAuthenticated,async function(req, res) {
                 console.log(err);
             }else{
                 // console.log(result);
-                res.send(result.chats);
+                // console.log(result.chats[0].sender._id, req.user._id );
+                if(String(result.chats[0].sender._id) !== String(req.user._id)){
+                    ChatRoom.findOneAndUpdate({_id: room},{ seen:true},(err,res)=>{
+                        if(err){
+                            console.log(err);
+                        }
+                        // console.log("seen true kr rha hu!!");
+                    });
+                }
+                res.send(result);
             }
         })
         
@@ -138,7 +150,7 @@ router.post('/oldChatMessage',ensureAuthenticated,async function(req, res) {
                 console.log(err);
             }else{
                 // console.log(result);
-                res.send(result.chats);
+                res.send(result);
             }
         })
         
