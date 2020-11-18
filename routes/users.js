@@ -74,8 +74,7 @@ router.post('/register',async function(req, res) {
                     status: false
                 });
                 newUser.save().then(user => {
-                // sendEmail(msg);
-                
+                    sendEmail(msg);
                     const noti = new Notification({
                         _id: new mongoose.Types.ObjectId(),
                         user_id: user._id
