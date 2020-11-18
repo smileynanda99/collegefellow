@@ -12,6 +12,9 @@
   },
   "author": "RK NANDA",
   "license": "ISC",
+  "engiens":{
+    "node": "12.16.2"
+  },
   "bugs": {
     "url": "https://github.com/smileynanda99/college-fellow/issues"
   },
