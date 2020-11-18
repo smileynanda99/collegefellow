@@ -165,6 +165,7 @@
             <!-- /#page-content-wrapper -->
         </div>
     </div>
+    <audio id="msg-tone" src="/tone/msg-tone.mp3" ></audio>
     <!-- /#wrapper -->
 
     <!-- JQuery -->
@@ -398,7 +399,8 @@
                   data +=`<span class="msg_time ml-2">${t}</span>
                                     </div>
                                     </div>`;  
-                  $('#msgContainer').append(data);                                    
+                  $('#msgContainer').append(data);  
+                  $('#msg-tone')[0].play();                                  
                   // Scroll down
                   $(".chat-container").stop().animate({ scrollTop: $(".chat-container")[0].scrollHeight}, 100);
                   }
