@@ -139,9 +139,11 @@ io.on('connection', socket => {
   });
 });
 
-
-//listen of port :3000
-server.listen(PORT, () => {
-    console.log(`server is running at port :${PORT}`);
-})
+app.listen(process.env.PORT ,process.env.IP, function () {
+    console.log("server is running at port 3000!");
+});
+// //listen of port :3000
+// server.listen(PORT, () => {
+//     console.log(`server is running at port :${PORT}`);
+// })
 
