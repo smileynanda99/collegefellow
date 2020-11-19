@@ -13,7 +13,7 @@
   },
   "author": "RK NANDA",
   "license": "ISC",
-  "engiens":{
+  "engines":{
     "node": "12.16.2"
   },
   "bugs": {
