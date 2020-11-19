@@ -61,7 +61,7 @@ router.post('/register',async function(req, res) {
                         text:`Email verify`,
                         html:`<h1 style="color: #d03737" >Hello College Fellower</h1>
                         <p>Thanks for Registering on college fellow.</p>
-                        <a class="btn btn-primary" href="https://safe-plateau-40217.herokuapp.com/users/confirm/${collegeEmail}/${emailToken}">Verify your account</a>`
+                        <a class="btn btn-primary" href="https://collegefellow.herokuapp.com/users/confirm/${collegeEmail}/${emailToken}">Verify your account</a>`
                       }
                     const newUser = new User({
                     _id:new mongoose.Types.ObjectId(),
