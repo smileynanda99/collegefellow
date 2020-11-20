@@ -14,8 +14,7 @@ const io = require('socket.io').listen(server);
 //import model
 const User = require('./models/user');
 const {ChatRoom, ChatMsg }= require('./models/chatRoom');
-const pass = require('./config/passport-config');
-pass(passport);
+require('./config/passport-config')(passport);
 
 //define port
 const PORT = process.env.PORT || 3000;
