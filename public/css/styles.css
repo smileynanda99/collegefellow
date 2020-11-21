@@ -53,3 +53,8 @@ a {
     padding: .3em;
     font-size: 10px;
 }
+
+.right-btn{
+    position: absolute;
+    right: 20px;
+}

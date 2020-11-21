@@ -281,16 +281,16 @@
         $.post('./profile/followList', { username },(res)=>{
           var Data = '';
             $.each(res, (key, value) => {
-                Data += `<a href='/${value.username}' ><li class='list'> <div class='list-img'>`;
+                Data += `<li class='list'><a href='/${value.username}' style='display:flex;' > <div class='list-img'> `;
                 Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
                 Data += "<div class='list-content'> <div><strong>" + value.username + "</strong> </div>";
-                Data += `<div>${ value.collegeName }</div></div>`;
+                Data += `<div>${ value.collegeName }</div></div> </a>`;
                 if(following.indexOf(value._id)== -1){
-                  Data += '<div class="list-btn" id='+value._id+'><button class="btn btn-primary" onclick="doFollow(\''+value.username+'\',\''+value._id+'\')">Follow Back</button></div> '; 
+                  Data += '<div class="list-btn right-btn" id='+value._id+'><button class="btn btn-primary" onclick="doFollow(\''+value.username+'\',\''+value._id+'\')">Follow Back</button></div> '; 
                 } else{
-                  Data +='<div class="list-btn" id='+value._id+'><button class="btn btn-danger" onclick="doUnfollow(\''+value.username+'\',\''+value._id+'\')">Unfollow</button></div> '; 
+                  Data +='<div class="list-btn right-btn" id='+value._id+'><button class="btn btn-danger" onclick="doUnfollow(\''+value.username+'\',\''+value._id+'\')">Unfollow</button></div> '; 
                 }
-                Data += "</li> </a>";                                  
+                Data += "</li> ";                                  
             });
             $('#followListResult').html(Data);
         }); 
@@ -304,12 +304,12 @@
           var Data = '';
             $.each(res, (key, value) => {
               
-                Data += `<a href='/${value.username}' ><li class='list'> <div class='list-img'>`;
+                Data += `<li class='list'><a href='/${value.username}' style='display:flex;' > <div class='list-img'>`;
                 Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
                 Data += "<div class='list-content'> <div><strong>" + value.username + "</strong> </div>";
-                Data += `<div>${ value.collegeName }</div></div>`;
-                Data +='<div class="list-btn" id='+value._id+'><button class="btn btn-danger" onclick="doUnfollow(\''+value.username+'\',\''+value._id+'\')">Unfollow</button></div> '; 
-                Data += "</li> </a>";                                  
+                Data += `<div>${ value.collegeName }</div></div> </a>`;
+                Data +='<div class="list-btn right-btn" id='+value._id+'><button class="btn btn-danger" onclick="doUnfollow(\''+value.username+'\',\''+value._id+'\')">Unfollow</button></div> '; 
+                Data += "</li> ";                                  
             });
             $('#followingListResult').html(Data);
         }); 
