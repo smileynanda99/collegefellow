@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {  ensureAuthenticated} = require('../config/auth'); 
 const User = require('../models/user');
-const {ChatRoom }= require('../models/chatRoom');
+const {ChatRoom}= require('../models/chatRoom');
 const mongoose = require('mongoose');
 
 
@@ -19,7 +19,31 @@ router.get('/chat/:id',ensureAuthenticated,async function(req, res) {
             match: { _id: id }}).
         exec();
     if(frnd.following.length===0){
-        res.send("You can't send message to this user without follow.")
+        await User.
+            findOne({ username: req.user.username}).
+            populate({
+                path: 'chatList.userId',
+                $elemMatch: {userId: mongoose.Types.ObjectId(id)}
+            }).
+            exec((err,result)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    result.chatList.forEach(ele=>{
+                        if(ele.userId._id == id){
+                            User.findOne({_id:id},(err,result)=>{
+                                    if(err){
+                                        console.log(err);
+                                    }else{
+                                        return res.render("chat", {user:req.user,chatwith:result});
+                                    }
+                            });
+                        }
+                    });
+                    // console.log("gdbd");
+                    // res.send("You can't send any message to this user without following");
+                }
+            })
     }else{
         // res.send("fine");
         await User.
