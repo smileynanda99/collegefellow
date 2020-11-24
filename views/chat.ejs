@@ -370,6 +370,7 @@
                 // Clear input
                 e.target.elements.ipMessage.value = '';
                 e.target.elements.ipMessage.focus();
+                $('.seen-status').removeClass('show');
               }); 
               //typing
               //1.emit
@@ -401,7 +402,8 @@
                                     </div>
                                     </div>`;  
                   $('#msgContainer').append(data);  
-                  $('#msg-tone')[0].play();                                  
+                  $('#msg-tone')[0].play(); 
+                  $('.seen-status').removeClass('show');                                 
                   // Scroll down
                   $(".chat-container").stop().animate({ scrollTop: $(".chat-container")[0].scrollHeight}, 100);
                   }

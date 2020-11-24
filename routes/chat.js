@@ -148,7 +148,7 @@ router.post('/chatMessage',ensureAuthenticated,async function(req, res) {
             }else{
                 // console.log(result);
                 // console.log(result.chats[0].sender._id, req.user._id );
-                if(String(result.chats[0].sender._id) !== String(req.user._id)){
+                if( result.chats.length!==0 && String(result.chats[0].sender._id) !== String(req.user._id)){
                     ChatRoom.findOneAndUpdate({_id: room},{ seen:true},(err,res)=>{
                         if(err){
                             console.log(err);
