@@ -148,9 +148,9 @@
                         <div class="card-footer ">
                           <div class="input-group"> 
                             <!-- <div class="input-group-append">
-                              <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+                              <span class="input-group-text attach_btn"><i class="fa fa-smile-o"></i></span>
                             </div> -->
-                            <input type="text" name="" class="form-control type_msg" id="ipMessage" placeholder="Type your message..." autocomplete=off></input>
+                            <input type="text"  class="form-control type_msg" id="ipMessage" placeholder="Type your message..." autocomplete=off></input>
                             <div class="input-group-append">
                               <button class="input-group-text send_btn btn" type="submit"><i class="fa fa-location-arrow"></i></button>
                             </div>
@@ -175,7 +175,11 @@
    <script src="/socket.io/socket.io.js" ></script>
     <script>
       	$(document).ready(function(){
+            
             const chatForm = document.getElementById('chat-form');
+            // $('.fa-smile-o').click(e =>{
+                 
+            // });
             $.post('/profile/numNotification',{clear: false}, (res)=>{
               if(res.newFollowing.length>0){
                 $('#noti').html(`<span class="badge badge-danger">${res.newFollowing.length}</span>`); 

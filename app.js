@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3000;
 
 
 //mongoose connect and set plugins
-mongoose.connect(process.env.DB_URL, 
+mongoose.connect(process.env.CUSTOMCONNSTR_DB_URL || process.env.DB_URL, 
   { useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> console.log('MongoDB Connected'))
   .catch(err=> console.log(err));
@@ -44,7 +44,7 @@ app.use(flash());
 app.set("socketio", io);
 //Express Session
 app.use(session({
-  secret: process.env.SESS_SECRET,
+  secret: process.env.APPSETTING_SESS_SECRET || process.env.SESS_SECRET,
   name: 'sessionId',
   resave: true,
   saveUninitialized: true,

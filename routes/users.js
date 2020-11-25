@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const crypto = require('crypto');
 const Notification = require('../models/notification');
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SG_MAIL_API_KEY);
+sgMail.setApiKey(process.env.APPSETTING_SG_MAIL_API_KEY || process.env.SG_MAIL_API_KEY);
 //import model
 const User = require('../models/user');
 //import config
@@ -61,7 +61,7 @@ router.post('/register',async function(req, res) {
                         text:`Email verify`,
                         html:`<h1 style="color: #d03737" >Hello College Fellower</h1>
                         <p>Thanks for Registering on college fellow.</p>
-                        <a class="btn btn-primary" href="https://collegefellow.herokuapp.com/users/confirm/${collegeEmail}/${emailToken}">Verify your account</a>`
+                        <a class="btn btn-primary" href="https://collegefellow.azurewebsites.net/users/confirm/${collegeEmail}/${emailToken}">Verify your account</a>`
                       }
                     const newUser = new User({
                     _id:new mongoose.Types.ObjectId(),
