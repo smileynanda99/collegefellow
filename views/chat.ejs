@@ -246,7 +246,7 @@
                       $.each(res, (key, value) => {
                                 if("<%=user.username%>" !=value.username){
                                     Data += `<li class='list'>  <div class='list-img'>`;
-                                    Data += `<img src='uploads-profile/${ value.photo }'  alt='profile'> </div>`;
+                                    Data += `<img src='/uploads-profile/${ value.photo }'  alt='profile'> </div>`;
                                     Data += "<div class='list-content'> <div><strong>" + value.username + "</strong> </div>";
                                     Data += "<div>Active now</div> <div class='online-list'></div> </div>";
                                     Data += `<div class='list-btn'> <a class='btn btn-primary' href='/chat/${value._id}' >chat</a>`;
@@ -267,7 +267,7 @@
                 var info = '';
                 $.each(res, (key, value) => {
                     info +=  `<a  href='/chat/${value.userId._id}'  ><li> <div class="user-header">`          
-                    info += `<img src='/uploads-profile/${ value.userId.photo }' style="width: 50px; border-radius: 50%;">`
+                    info += `<img src='/uploads-profile/${ value.userId.photo }' style="width: 50px; height:50px; border-radius: 50%;">`
                     info += `<strong class="align-top" style="margin-left: 5px;"> `
                     if(value.userId.name === undefined){
                     info +=`${ value.userId.username}`;
@@ -295,6 +295,8 @@
                   
                          
             //join specific room
+            console.log("id");
+            console.log("<%=chatwith._id%>");
             if("<%=chatwith._id%>"){
               var cphoto='';
               var n = 0;
@@ -305,11 +307,12 @@
               $.post('/room',{id:"<%=chatwith._id%>"},(chatRoomID)=>{
                     room= chatRoomID;
                     // console.log(chatRoomID+" hvhg "+room);
+                    console.log("room ",room);
                     socket.emit('joinChat', {username, room}); // username,chatRoomID
                     //chatshow
                     $.post('/chatMessage',{room},(res)=>{
                       // console.log(res);
-                      
+                      console.log("room ",room);
                       if(res.seen === true && String(res.chats[0].sender._id)==id){
                         $('.seen-status').addClass('show');
                       }
