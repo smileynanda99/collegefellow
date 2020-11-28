@@ -1,7 +1,8 @@
 body {
     background-color: #faf4f4;
     overflow-x: hidden;
-   
+    margin: 0px;
+    padding: 0px;
 }
 ul {
 	list-style: none;
@@ -50,11 +51,36 @@ a {
 }
 
 .badge{
-    padding: .3em;
+    padding: .2em;
     font-size: 10px;
 }
 
 .right-btn{
     position: absolute;
     right: 20px;
+}
+
+.fa{
+    font-size: x-large;
+}
+
+@media (max-width: 400px) {
+    .fa{
+        font-size: large;
+    }
+    .nav-tabs{
+        font-size: small;
+    }
+    .arrow{
+        left: 165px;
+    }
+}
+
+.row{
+    margin: 0px;
+}
+
+.col{
+    padding:  0px;
+
 }

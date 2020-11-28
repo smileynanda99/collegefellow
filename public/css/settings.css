@@ -1,5 +1,7 @@
 .emp-profile{
-    padding: 3%;
+    /* padding: 3%; */
+    padding: 0px;
+    padding-bottom: 5%;
     margin-bottom: 3%;
     border-radius: 0.5rem;
     background: #fff;

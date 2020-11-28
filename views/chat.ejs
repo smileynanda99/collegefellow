@@ -25,7 +25,7 @@
         <ul class="navbar-nav ml-auto">
          <li class="nav-item dropdown">
               <a class="nav-link text-white dropdown-toggle" href="#" id="DroownActive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                <i class="fa fa-toggle-on" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+                <i class="fa fa-toggle-on" style="margin-left: 1rem;"></i></a>
                 <div class="dropdown-menu active-dropdown" aria-labelledby="DropdownActive">
                   <div class="arrow"></div>
                   <ul class="coloum" id="statusResult">
@@ -36,7 +36,7 @@
 
             <li class="nav-item dropdown">
               <a class="nav-link text-white dropdown-toggle" href="#" id="DroownActive" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                <i class="fa fa-bell-o" style="font-size:x-large; margin-left: 1.5rem;" id="noti"></i></a>
+                <i class="fa fa-bell-o" style="margin-left: 1rem;" id="noti"></i></a>
                 <div class="dropdown-menu active-dropdown" aria-labelledby="DropdownActive">
                   <div class="arrow"></div>
                   <ul class="coloum" id="notiResult">
@@ -45,32 +45,18 @@
                   </div>
             </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link text-white dropdown-toggle" href="#" id="DroownExplore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-              <i class="fa fa-search-plus" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
-              <div class="dropdown-menu explore-dropdown" aria-labelledby="DropdownExplore">
-                <div class="arrow"></div>
-                <div class="input-group pt-1 p-2">
-                  <input type="text" class="form-control" placeholder="search..."  id="userSearch"
-                   aria-label="Username" autocomplete="off" aria-describedby="basic-addon1">
-                </div>
-                <ul class="coloum" id="searchResult">
-                 <!-- search result will here -->
-                </ul>
-                </div>
-          </li>
             <li class="nav-item ">
               <a class="nav-link " href="#" style="color: #D03737;"  >
-                <i class="fa fa-paper-plane" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+                <i class="fa fa-paper-plane" style="margin-left: 1rem;"></i></a>
             </li>
             <li class="nav-item ">
               <a class="nav-link text-white" href="/profile" >
-                <i class="fa fa-user-circle" style="font-size:x-large; margin-left: 1.5rem;"></i></a>
+                <i class="fa fa-user-circle" style="margin-left: 1rem;"></i></a>
             </li>
           </ul>
         <!--active chat list-->
-        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
-            <i class="fa fa-bars" style="font-size:x-large; margin-left: 1.5rem; color: white;"></i>
+        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle" style="margin-right: 0px;">
+            <i class="fa fa-bars" style="margin-left: 1rem; color: white;"></i>
         </a>
       </nav>
     </div>
@@ -175,7 +161,17 @@
    <script src="/socket.io/socket.io.js" ></script>
     <script>
       	$(document).ready(function(){
-            
+          $(window).resize(function() {
+              if(window.innerWidth > 800) {
+                  $("body").css({
+                      "overflow-x": "hidden"
+                  });
+              } else {
+                  $("body").css({
+                      "overflow-x": "visible"
+                  });
+              }
+          });
             const chatForm = document.getElementById('chat-form');
             // $('.fa-smile-o').click(e =>{
                  
@@ -215,24 +211,6 @@
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
             });
-
-            $('#userSearch').on("keyup", function() {
-              const username = $(this).val();
-              $.post('/explore', { data: username },(res)=>{
-                    var Data = '';
-                    $.each(res, (key, value) => {
-                      if("<%=user.username%>" !=value.username){
-                            Data += `<a href='/${value.username}' ><li class='list'>  <div class='list-img'>`;
-                            Data += `<img src='/uploads-profile/${ value.photo }'  alt='profile'> </div>`;
-                            Data += "<div class='list-content'> <div><strong>" + value.username + "</strong></div>";
-                            Data += "<div>" + value.collegeName + "</div>";
-                            Data += "</div>  </li> </a>"; 
-                      }
-                        });
-                        $('#searchResult').html(Data);
-                    
-                });
-            }); 
 
             //socket clinet side
             const socket = io();

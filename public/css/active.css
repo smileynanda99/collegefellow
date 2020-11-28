@@ -1,7 +1,7 @@
 .dropdown-toggle:after { content: none }
 .active-dropdown.show {
     display: inline-block;
-    width: 340px;
+    width: 300px;
 }
 .active-dropdown{
     position: relative;
@@ -121,3 +121,10 @@
 .offline{
     background-color: #c23616 !important;
     }
+
+@media (max-width: 400px) {
+    .arrow{
+        left: 165px;
+    }
+}
+    

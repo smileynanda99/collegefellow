@@ -5,6 +5,7 @@
 }
 body{
     overflow-x: hidden;
+    overflow: hidden;
 }
 #wrapper {
     padding-left: 0;
@@ -124,7 +125,7 @@ body,html{
    
 }
 .col{
-    min-width: 400px;
+    min-width: 360px;
     max-width: 900px;
     overflow-x: auto;
     height: 88.5vh;
@@ -365,7 +366,12 @@ position: relative;
     }
   }
 
-
+@media (max-width: 400px) {
+    .chat-container{
+        height: 60vh;
+    }
+}
+  
 
 
 
