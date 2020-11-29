@@ -5,8 +5,11 @@ const passport = require('passport')
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const Notification = require('../models/notification');
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.APPSETTING_SG_MAIL_API_KEY || process.env.SG_MAIL_API_KEY);
+//mail setup
+const mailgun = require('mailgun-js');
+const API_KEY = process.env.APPSETTING_SG_MAIL_API_KEY || process.env.SG_MAIL_API_KEY;
+const DOMAIN = 'collegefellow.social';
+const mg = mailgun({apiKey: API_KEY, domain: DOMAIN});
 //import model
 const User = require('../models/user');
 //import config
@@ -54,8 +57,8 @@ router.post('/register',async function(req, res) {
                 }
                 else{
                     emailToken = Math.floor(Math.random()*1000000+1);
-                    const msg = {
-                        from: 'smileynanda99@gmail.com',
+                    const data = {
+                        from: 'Verification Email <smileynanda99@gmail.com>',
                         to: collegeEmail,
                         subject: 'College fellowers- verify your email.',
                         text:`Email verify`,
@@ -74,7 +77,11 @@ router.post('/register',async function(req, res) {
                     status: false
                 });
                 newUser.save().then(user => {
-                    sendEmail(msg);
+                    mg.messages().send(data, function (error, body) {
+                        if(error){
+                            console.log(error);   
+                        }
+                    });
                     const noti = new Notification({
                         _id: new mongoose.Types.ObjectId(),
                         user_id: user._id
@@ -117,8 +124,8 @@ router.post('/resetPass', async (req,res)=>{
         if(!err){
             if(result.length>0){
                 const getPassword= crypto.randomBytes(8).toString('hex');
-                const msg = {
-                    from: 'smileynanda99@gmail.com',
+                const data = {
+                    from: 'Reset Password <smileynanda99@gmail.com>',
                     to: req.body.collegeEmail,
                     subject: 'College fellowers- Reset Password.',
                     text:`Reset Password`,
@@ -127,10 +134,18 @@ router.post('/resetPass', async (req,res)=>{
                   }
                 bcrypt.hash(getPassword, saltRounds,async function(err, hash) {
                     if(!err){
-                        sendEmail(msg);
-                        await User.findOneAndUpdate({collegeEmail:req.body.collegeEmail},{password:hash});
-                        req.flash('success_msg','New Password is send on Registered email.');
-                        res.redirect('./login');
+                        mg.messages().send(data, function (error, body) {
+                            if(error){
+                                console.log(error); 
+                                req.flash('error_msg','Something went Wrong.');
+                                res.redirect('./login');  
+                            }else{
+                                await User.findOneAndUpdate({collegeEmail:req.body.collegeEmail},{password:hash});
+                                req.flash('success_msg','New Password is send on Registered email.');
+                                res.redirect('./login');
+                            }
+                        });
+                        
                     }
                 });
 

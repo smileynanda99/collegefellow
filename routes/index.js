@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SG_MAIL_API_KEY);
+const mailgun = require('mailgun-js');
+const API_KEY = process.env.APPSETTING_SG_MAIL_API_KEY || process.env.SG_MAIL_API_KEY;
+const DOMAIN = 'collegefellow.social';
+const mg = mailgun({apiKey: API_KEY, domain: DOMAIN});
 
 router.get('/', (req, res) => res.render('index'));
 
@@ -12,8 +14,8 @@ router.post('/', (req, res) =>{
         });
     };
     const { name, email, phoneNo, message} = req.body;
-    const msg = {
-        from: 'smileynanda99@gmail.com',
+    const data = {
+        from: 'CF Feedback <smileynanda99@gmail.com>',
         to: 'smileynanda100@gmail.com',
         subject: 'College fellowers- Feed Back!',
         text:`feedback`,
@@ -22,7 +24,11 @@ router.post('/', (req, res) =>{
         <h4>Mobile No: ${phoneNo}</h4>
         <p>Message: ${message}</p>`
       }
-    sendEmail(msg);  
+      mg.messages().send(data, function (error, body) {
+        if(error){
+            console.log(error);
+        }
+    });  
     res.redirect('/');
 });
 
