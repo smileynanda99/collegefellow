@@ -132,9 +132,9 @@ router.post('/resetPass', async (req,res)=>{
                     html:`<h3>your password is reset. Now you can Login with bellow password.</h3>
                           <h2 style="color: #d03737" >${getPassword}</h2>`
                   }
-                bcrypt.hash(getPassword, saltRounds,async function(err, hash) {
+                bcrypt.hash(getPassword, saltRounds,function(err, hash) {
                     if(!err){
-                        mg.messages().send(data, function (error, body) {
+                        mg.messages().send(data,async  function (error, body) {
                             if(error){
                                 console.log(error); 
                                 req.flash('error_msg','Something went Wrong.');
