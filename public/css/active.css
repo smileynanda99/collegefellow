@@ -1,7 +1,7 @@
 .dropdown-toggle:after { content: none }
 .active-dropdown.show {
     display: inline-block;
-    width: 300px;
+    width: 280px;
 }
 .active-dropdown{
     position: relative;
@@ -11,9 +11,21 @@
     width: 100%;
 }
 
+.noti-dropdown.show {
+    display: inline-block;
+    width: 250px;
+}
+.noti-dropdown{
+    position: relative;
+    top:45px;
+    left: -140px;
+    border-radius: 6px;
+    width: 100%;
+}
+
 .explore-dropdown.show {
     display: inline-block;
-    width: 300px;
+    width: 250px;
 }
 .explore-dropdown{
     position: relative;
@@ -26,7 +38,7 @@
 
 .arrow{
     position: absolute;
-    left:177px;
+    left:170px;
     top:-7px;
     width: 14px;
     height: 14px;
