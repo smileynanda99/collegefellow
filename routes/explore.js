@@ -10,7 +10,8 @@ router.post('/explore',ensureAuthenticated,async function(req, res) {
             { $or:[
                {username: { "$regex": query, "$options": 'i' }},
                     {name: { "$regex": query, "$options": 'i' }},
-             {collegeName: { "$regex": query, "$options": 'i' }}
+             {collegeName: { "$regex": query, "$options": 'i' }},
+             {collegeEmail: { "$regex": query, "$options": 'i' }}
             ]}, 
              function(err,docs) { 
                  if(err){

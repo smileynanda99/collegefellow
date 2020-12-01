@@ -99,6 +99,7 @@
                                                                 border-radius: 50%;"></i>
                            <h1 class="mt-3">Welcome To College Fellow !!!</h1>
                            <h4>Send Message to your Friends.</h4>
+                           <button data-toggle="modal" data-target="#msg-modal" class="btn btn-primary mt-3" ><strong> Send Message</strong></button>
                         </div>
                       <% } else {%>
                       <div class="card-header">
@@ -153,6 +154,25 @@
               </div>
             <!-- /#page-content-wrapper -->
         </div>
+    </div>
+    <div class="modal" tabindex="-1" id="msg-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>If you are mobile user click on right top corner 3 bar menu 
+              icon to seen Active chatlist. And if any user not in your list
+               (and first time your chatlist is empty) go to user profile with you want 
+               to chat first follow him/her then click on chat button.</p>
+          </div>
+          
+        </div>
+      </div>
     </div>
     <audio id="msg-tone" src="/tone/msg-tone.mp3" ></audio>
     <!-- /#wrapper -->
