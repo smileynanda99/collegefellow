@@ -6,13 +6,15 @@ const {  ensureAuthenticated} = require('../config/auth');
 router.post('/explore',ensureAuthenticated,async function(req, res) {
     const query = req.body.data;
     if(query!==''){
-        await User.find(
-            { $or:[
-               {username: { "$regex": query, "$options": 'i' }},
-                    {name: { "$regex": query, "$options": 'i' }},
-             {collegeName: { "$regex": query, "$options": 'i' }},
-             {collegeEmail: { "$regex": query, "$options": 'i' }}
-            ]}, 
+        await User.find({
+            $and:[{status: true},
+                { $or:[
+                    {username: { "$regex": query, "$options": 'i' }},
+                         {name: { "$regex": query, "$options": 'i' }},
+                  {collegeName: { "$regex": query, "$options": 'i' }},
+                  {collegeEmail: { "$regex": query, "$options": 'i' }}
+                 ]}]
+        }, 
              function(err,docs) { 
                  if(err){
                      console.log(err);
