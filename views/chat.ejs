@@ -266,24 +266,24 @@
                 // console.log(res);
                 var info = '';
                 $.each(res, (key, value) => {
-                    info +=  `<a  href='/chat/${value.userId._id}'  ><li> <div class="user-header">`          
-                    info += `<img src='/uploads-profile/${ value.userId.photo }' style="width: 50px; height:50px; border-radius: 50%;">`
+                    info +=  `<a  href='/chat/${value.ele.userId._id}'  ><li> <div class="user-header">`          
+                    info += `<img src='/uploads-profile/${ value.ele.userId.photo }' style="width: 50px; height:50px; border-radius: 50%;">`
                     info += `<strong class="align-top" style="margin-left: 5px;"> `
-                    if(value.userId.name === undefined){
-                    info +=`${ value.userId.username}`;
+                    if(value.ele.userId.name === undefined){
+                    info +=`${ value.ele.userId.username}`;
                     }else{
-                      info +=`${ value.userId.name}`;  
+                      info +=`${ value.ele.userId.name}`;  
                     }
                     info +=`</strong>`;
-                    if(value.chatId.seen == false){
-                      info +=`<span class='badge badge-danger ml-3' id='${value.userId._id}' ><i class='fa fa-commenting'></i></span>`;
+                    if(value.ele.chatId.seen == false && value.who == true){
+                      info +=`<span class='badge badge-danger ml-3' id='${value.ele.userId._id}' ><i class='fa fa-commenting'></i></span>`;
                     }
                     info +=`</div> <div class='user-footer'> <p class='text-smaller text-muted mb-0'> `;
-                    if(value.userId.active===true){
+                    if(value.ele.userId.active===true){
                     info +='Active now';
                     info +=`</p> <span class="online_icon"></span>`;
                     }else{
-                    const t=moment(Number(value.userId.lastSeen)).fromNow()
+                    const t=moment(Number(value.ele.userId.lastSeen)).fromNow()
                     info +=`${t}`;
                     info +=`</p> <span class="online_icon offline"></span>`;
                     }  
@@ -411,7 +411,9 @@
                   }
               });
               $(window).focus(()=>{
-                    socket.emit('read',room , id); 
+                    socket.emit('read',room , id);
+                    const spanid = "<%=chatwith._id%>";
+                    $(`#${spanid}`).hide(); 
               });
               socket.on('read',(roomId, userId)=>{
                   if(roomId==room && userId !=id){

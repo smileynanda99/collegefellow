@@ -115,7 +115,7 @@ router.post('/chatWith',ensureAuthenticated,async function(req, res) {
         
 });
 
-router.post('/chatList',ensureAuthenticated,async function(req, res) {
+router.post('/chatList',ensureAuthenticated,async function(req, response) {
     
     await User.
     findOne({ username: req.user.username}).
@@ -130,7 +130,32 @@ router.post('/chatList',ensureAuthenticated,async function(req, res) {
             console.log(err);
         }else{
             // console.log(result);
-            res.send(result.chatList);
+            var count =0;
+            var resArray = [];
+            result.chatList.forEach(ele=>{
+                ChatRoom.findById(ele.chatId).
+                populate({path:'chats',limit:1,  options: { sort: { 'time': -1 }}}).
+                limit(5).
+                exec((err,res)=>{
+                    if(err)console.log(err);
+                    else{
+                        count++;
+                        // console.log(typeof(res.chats[0].sender), typeof(req.user._id));
+                        // console.log(res.chats[0].sender, req.user._id );
+                        if(String(res.chats[0].sender)===String(req.user._id))
+                        {
+                            console.log("sender");
+                            resArray.push({ele,who:false})
+                        }else{
+                            console.log("not sender");
+                            resArray.push({ele,who:true})
+                        }
+                        if(count==result.chatList.length){
+                            response.send(resArray);
+                        }
+                    }
+                })
+            })
         }
     })
 
